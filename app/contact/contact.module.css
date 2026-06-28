@@ -1,0 +1,219 @@
+.container {
+  width: 100%;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #fff5ef,
+    #ffe7da
+  );
+
+  padding: 40px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+
+  color: #222;
+}
+
+.hero p {
+  color: #666;
+}
+
+/* CONTENT */
+
+.content {
+  display: grid;
+
+  grid-template-columns: 1fr 1.3fr;
+
+  gap: 40px;
+
+  padding: 100px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info h2,
+.formBox h2 {
+  color: #f7763d;
+  margin-bottom: 10px;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border: 1px solid #eee;
+  border-radius: 16px;
+
+  background: white;
+}
+
+.infoCard svg {
+  color: #f7763d;
+}
+
+.infoCard h4 {
+  margin-bottom: 5px;
+}
+
+.infoCard p {
+  color: #666;
+}
+
+/* FORM */
+
+.formBox {
+  background: white;
+
+  padding: 30px;
+
+  border: 1px solid #eee;
+
+  border-radius: 20px;
+}
+
+.formBox form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.formBox input,
+.formBox textarea {
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  outline: none;
+
+  font-family: inherit;
+}
+
+.formBox input:focus,
+.formBox textarea:focus {
+  border-color: #f7763d;
+}
+
+.formBox button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  background: #f7763d;
+  color: white;
+
+  cursor: pointer;
+}
+
+/* SOCIAL */
+
+.social {
+  text-align: center;
+
+  padding: 40px 20px;
+}
+
+.social h3 {
+  color: #f7763d;
+
+  margin-bottom: 20px;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socialIcons svg {
+  color: #f7763d;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.socialIcons svg:hover {
+  transform: scale(1.15);
+}
+
+/* MAP */
+
+.map {
+  padding: 100px;
+}
+
+.map h2 {
+  text-align: center;
+
+  color: #f7763d;
+
+  margin-bottom: 30px;
+}
+
+.mapBox {
+  height: 450px;
+
+  border-radius: 25px;
+
+  background: #f5f5f5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #888;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+
+    padding: 50px 20px;
+  }
+
+  .map {
+    padding: 50px 20px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}

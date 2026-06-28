@@ -1,0 +1,1136 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "غذای گربه مفید پریمیوم (۴ کیلوگرم)",
+      "description": "غذای خشک کامل مخصوص گربه‌های بالغ، غنی از پروتئین، ویتامین‌ها و مواد معدنی برای حفظ سلامت پوست، مو و دستگاه گوارش.",
+      "price": 520000,
+      "category": "cat-food",
+      "image": "/Images/products/foodcat1.svg",
+      "rating": 4.8,
+      "stock": 12,
+      "oldPrice": 610000,
+      "discount": 15,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "brand": "Mofeed",
+
+      "isAvailable": true,
+
+      "tags": ["Featured", "Best Seller", "Cat Food", "Premium"]
+    },
+    {
+      "id": 2,
+      "productName": "غذای گربه Kitzy پریمیوم (۲ کیلوگرم)",
+      "description": "فرمول سبک و قابل هضم برای گربه‌های حساس با طعم دلچسب، مناسب استفاده روزانه و تقویت سیستم ایمنی.",
+      "price": 340000,
+      "category": "cat-food",
+      "image": "/Images/products/foodvati.svg",
+      "rating": 4.6,
+      "stock": 18,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Kitzy",
+
+      "isAvailable": true,
+
+      "tags": ["Cat Food", "Daily"]
+    },
+    {
+      "id": 3,
+      "productName": "غذای سگ Science Diet (۳ کیلوگرم)",
+      "description": "غذای تخصصی سگ با ترکیبات متعادل برای افزایش انرژی، سلامت مفاصل و تقویت سیستم ایمنی.",
+      "price": 890000,
+      "category": "dog-food",
+      "image": "/Images/products/fooddog.svg",
+      "rating": 4.9,
+      "stock": 9,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Science Diet",
+
+      "isAvailable": true,
+
+      "tags": ["Dog Food", "Premium"]
+    },
+    {
+      "id": 4,
+      "productName": "مولتی ویتامین گربه Nulo",
+      "description": "مکمل ویتامینی کامل برای تقویت سیستم ایمنی، سلامت استخوان‌ها و افزایش شادابی گربه.",
+      "price": 295000,
+      "category": "supplement",
+      "image": "/Images/products/cat.jpeg",
+      "rating": 4.7,
+      "stock": 25,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Nulo",
+
+      "isAvailable": true,
+
+      "tags": ["Supplement", "Cat"]
+    },
+    {
+      "id": 5,
+      "productName": "باکس حمل سگ و گربه سایز ۳ پانیتو",
+      "description": "باکس حمل مقاوم و سبک با تهویه مناسب، مناسب سفرهای شهری و بین‌شهری.",
+      "price": 1850000,
+      "category": "accessories",
+      "image": "/Images/products/fooddog.svg",
+      "rating": 4.5,
+      "stock": 6,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Panito",
+
+      "isAvailable": true,
+
+      "tags": ["Carrier", "Travel"]
+    },
+    {
+      "id": 6,
+      "productName": "کوله پشتی حبابدار سگ و گربه مدل یونیورس",
+      "description": "کوله حمل مدرن با پنجره حبابی و طراحی ارگونومیک، مناسب پیاده‌روی و سفر.",
+      "price": 2350000,
+      "category": "accessories",
+      "image": "/Images/products/bag.svg",
+      "rating": 4.8,
+      "stock": 8,
+      "oldPrice": 2930000,
+      "discount": 20,
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isNew": true,
+      "brand": "Universe",
+
+      "isAvailable": true,
+
+      "tags": ["Featured", "Backpack", "Travel", "New"]
+    },
+    {
+      "id": 7,
+      "productName": "قلاده کتفی پددار سگ سایز بزرگ",
+      "description": "قلاده مقاوم با بند قابل تنظیم و پد نرم، مناسب سگ‌های نژاد متوسط و بزرگ.",
+      "price": 390000,
+      "category": "accessories",
+      "image": "/Images/products/saver.svg",
+      "rating": 4.4,
+      "stock": 15,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Keep",
+
+      "isAvailable": true,
+
+      "tags": ["Harness", "Dog"]
+    },
+    {
+      "id": 8,
+      "productName": "سشوار حیوانات خانگی PET GROOMING",
+      "description": "سشوار کم‌صدا با قدرت بالا برای خشک کردن سریع و ایمن موهای حیوانات خانگی.",
+      "price": 3250000,
+      "category": "grooming",
+      "image": "/Images/products/glovs.svg",
+      "rating": 4.8,
+      "stock": 4,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "PET GROOMING",
+
+      "isAvailable": true,
+
+      "tags": ["Dryer", "Professional"]
+    },
+    {
+      "id": 9,
+      "productName": "باکس حمل پرندگان Eva",
+      "description": "باکس حمل سبک و مقاوم با تهویه مناسب برای جابه‌جایی انواع پرندگان زینتی.",
+      "price": 1450000,
+      "category": "accessories",
+      "image": "/pic/products/birdboxroyal.avif",
+      "rating": 4.5,
+      "stock": 11,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Eva",
+
+      "isAvailable": true,
+
+      "tags": ["Bird", "Carrier"]
+    },
+    {
+      "id": 10,
+      "productName": "طناب بازی سگ",
+      "description": "اسباب‌بازی طنابی مقاوم مناسب بازی، آموزش و تقویت سلامت دندان سگ.",
+      "price": 185000,
+      "category": "toy",
+      "image": "/pic/products/bazisag4.jpeg",
+      "rating": 4.6,
+      "stock": 24,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Trixie",
+
+      "isAvailable": true,
+
+      "tags": ["Toy", "Dog"]
+    },
+    {
+      "id": 11,
+      "productName": "کیف حمل گربه Royal King",
+      "description": "کیف حمل مقاوم با تهویه مناسب و دسته ارگونومیک، مناسب استفاده روزمره.",
+      "price": 2480000,
+      "category": "accessories",
+      "image": "/pic/products/box petkiti gorbe.jpeg",
+      "rating": 4.7,
+      "stock": 9,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Royal King",
+
+      "isAvailable": true,
+
+      "tags": ["Carrier", "Cat"]
+    },
+    {
+      "id": 12,
+      "productName": "کنسرو غذای گربه",
+      "description": "کنسرو خوش‌طعم با گوشت تازه و مواد مغذی، مناسب گربه‌های بالغ.",
+      "price": 165000,
+      "category": "cat-food",
+      "image": "/pic/products/canservercat.jpg",
+      "rating": 4.8,
+      "stock": 36,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Mofeed",
+
+      "isAvailable": true,
+
+      "tags": ["Cat Food", "Wet Food"]
+    },
+    {
+      "id": 13,
+      "productName": "مکمل گربه Euro Pet",
+      "description": "مکمل غذایی حاوی ویتامین و مواد معدنی برای افزایش انرژی و سلامت عمومی گربه.",
+      "price": 420000,
+      "category": "supplement",
+      "image": "/pic/products/catcaream.jpg",
+      "rating": 4.5,
+      "stock": 14,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Euro Pet",
+
+      "isAvailable": true,
+
+      "tags": ["Supplement", "Vitamin"]
+    },
+    {
+      "id": 14,
+      "productName": "اسپری ضدعفونی پنجه حیوانات",
+      "description": "اسپری بهداشتی مناسب تمیز کردن پنجه حیوانات پس از پیاده‌روی.",
+      "price": 280000,
+      "category": "grooming",
+      "image": "/pic/products/default.svg",
+      "rating": 4.3,
+      "stock": 17,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Pet Care",
+
+      "isAvailable": true,
+
+      "tags": ["Cleaning", "Hygiene"]
+    },
+    {
+      "id": 15,
+      "productName": "مولتی بوست گربه",
+      "description": "مکمل تقویتی حاوی انواع ویتامین و مواد معدنی برای افزایش اشتها و تقویت سیستم ایمنی.",
+      "price": 610000,
+      "category": "supplement",
+      "image": "/pic/products/catmedials.jpeg",
+      "rating": 4.8,
+      "stock": 10,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Multi Boost",
+
+      "isAvailable": true,
+
+      "tags": ["Supplement", "Cat"]
+    },
+    {
+      "id": 16,
+      "productName": "مولتی ویتامین Jonest",
+      "description": "مکمل ویتامینی مناسب سگ و گربه جهت حفظ سلامت استخوان، پوست و مو.",
+      "price": 540000,
+      "category": "supplement",
+      "image": "/pic/products/catvit1.jpeg",
+      "rating": 4.6,
+      "stock": 13,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Jonest",
+
+      "isAvailable": true,
+
+      "tags": ["Vitamin", "Dog", "Cat"]
+    },
+    {
+      "id": 17,
+      "productName": "مولتی ویتامین سگ Euro Pet",
+      "description": "مکمل غذایی مخصوص سگ برای تقویت سیستم ایمنی، مفاصل و سلامت عمومی بدن.",
+      "price": 580000,
+      "category": "supplement",
+      "image": "/pic/products/creamsag.jpg",
+      "rating": 4.7,
+      "stock": 8,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Euro Pet",
+
+      "isAvailable": true,
+
+      "tags": ["Supplement", "Dog"]
+    },
+    {
+      "id": 18,
+      "productName": "دستکش تمیزکننده Grooming",
+      "description": "دستکش مخصوص جمع‌آوری موهای اضافی حیوانات هنگام شانه کردن و استحمام.",
+      "price": 330000,
+      "category": "grooming",
+      "image": "/pic/products/dashtkeshtamizi.jpeg",
+      "rating": 4.6,
+      "stock": 21,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Grooming",
+
+      "isAvailable": true,
+
+      "tags": ["Brush", "Cleaning"]
+    },
+    {
+      "id": 19,
+      "productName": "اسباب‌بازی گربه Mewo",
+      "description": "اسباب‌بازی سرگرم‌کننده مناسب افزایش تحرک و کاهش استرس گربه‌های خانگی.",
+      "price": 245000,
+      "category": "toy",
+      "image": "/pic/products/katikati.jpg",
+      "rating": 4.7,
+      "stock": 18,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Mewo",
+
+      "isAvailable": true,
+
+      "tags": ["Toy", "Cat"]
+    },
+    {
+      "id": 20,
+      "productName": "مولتی ویتامین سگ Beaphar",
+      "description": "مکمل تخصصی حاوی ویتامین‌های ضروری برای تقویت استخوان‌ها، مفاصل و سیستم ایمنی سگ.",
+      "price": 690000,
+      "category": "supplement",
+      "image": "/pic/products/moltivitaminsag.jpg",
+      "rating": 4.8,
+      "stock": 11,
+      "oldPrice": 920000,
+      "discount": 25,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "brand": "Beaphar",
+
+      "isAvailable": true,
+
+      "tags": ["Featured", "Best Seller", "Supplement", "Dog"]
+    },
+    {
+      "id": 21,
+      "productName": "قلاده سگ Keep",
+      "description": "قلاده مقاوم با بند قابل تنظیم، مناسب استفاده روزانه و پیاده‌روی.",
+      "price": 320000,
+      "category": "accessories",
+      "image": "/pic/products/qalade1.jpg",
+      "rating": 4.5,
+      "stock": 20,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Keep",
+
+      "isAvailable": true,
+
+      "tags": ["Collar", "Dog"]
+    },
+    {
+      "id": 22,
+      "productName": "قلاده سگ بزرگ Keep",
+      "description": "قلاده مخصوص سگ‌های نژاد بزرگ با سگک فلزی مقاوم و طراحی ارگونومیک.",
+      "price": 420000,
+      "category": "accessories",
+      "image": "/pic/products/qalade2.jpg",
+      "rating": 4.6,
+      "stock": 12,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Keep",
+
+      "isAvailable": true,
+
+      "tags": ["Collar", "Large Dog"]
+    },
+    {
+      "id": 23,
+      "productName": "قلاده سگ کوچک Keep",
+      "description": "قلاده سبک و نرم مناسب سگ‌های کوچک با قابلیت تنظیم اندازه.",
+      "price": 260000,
+      "category": "accessories",
+      "image": "/pic/products/qalade4.jpg",
+      "rating": 4.4,
+      "stock": 17,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Keep",
+
+      "isAvailable": true,
+
+      "tags": ["Collar", "Small Dog"]
+    },
+    {
+      "id": 24,
+      "productName": "غذای گربه Royal Canin",
+      "description": "غذای خشک سوپر پریمیوم مناسب گربه‌های بالغ با فرمول متعادل و ارزش غذایی بالا.",
+      "price": 1980000,
+      "category": "cat-food",
+      "image": "/pic/products/qazagorbe1.jpg",
+      "rating": 4.9,
+      "stock": 8,
+      "oldPrice": 2320000,
+      "discount": 15,
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "brand": "Royal Canin",
+
+      "isAvailable": true,
+
+      "tags": ["Featured", "Premium", "Best Seller", "Cat Food"]
+    },
+    {
+      "id": 25,
+      "productName": "غذای گربه بریتیش Royal Canin",
+      "description": "فرمول اختصاصی برای گربه‌های نژاد بریتیش با ترکیبات تقویت‌کننده مفاصل و عضلات.",
+      "price": 2150000,
+      "category": "cat-food",
+      "image": "/pic/products/qazagorbe2.jpg",
+      "rating": 4.8,
+      "stock": 6,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Royal Canin",
+
+      "isAvailable": true,
+
+      "tags": ["British", "Cat Food"]
+    },
+    {
+      "id": 26,
+      "productName": "غذای ماهی Guppy",
+      "description": "غذای پولکی کامل برای انواع ماهیان گوپی، سرشار از مواد مغذی و ویتامین‌ها.",
+      "price": 185000,
+      "category": "fish-food",
+      "image": "/pic/products/qazamahi.jpg",
+      "rating": 4.5,
+      "stock": 25,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Guppy",
+
+      "isAvailable": true,
+
+      "tags": ["Fish Food"]
+    },
+    {
+      "id": 27,
+      "productName": "غذای ماهی Hikari",
+      "description": "غذای باکیفیت ژاپنی برای ماهیان آکواریومی با قابلیت هضم بالا.",
+      "price": 420000,
+      "category": "fish-food",
+      "image": "/pic/products/dqazamahi2.jpg",
+      "rating": 4.8,
+      "stock": 14,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Hikari",
+
+      "isAvailable": true,
+
+      "tags": ["Premium", "Fish Food"]
+    },
+    {
+      "id": 28,
+      "productName": "غذای ماهی Marine",
+      "description": "غذای کامل مخصوص ماهیان آب‌شور با ترکیبات غنی از پروتئین و امگا ۳.",
+      "price": 590000,
+      "category": "fish-food",
+      "image": "/pic/products/qazamahi6.jpeg",
+      "rating": 4.7,
+      "stock": 10,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Marine",
+
+      "isAvailable": true,
+
+      "tags": ["Salt Water", "Fish Food"]
+    },
+    {
+      "id": 29,
+      "productName": "غذای ماهی Alborz",
+      "description": "غذای اقتصادی و مغذی برای انواع ماهیان زینتی آب شیرین.",
+      "price": 290000,
+      "category": "fish-food",
+      "image": "/pic/products/qazamahiq.jpeg",
+      "rating": 4.4,
+      "stock": 19,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Alborz",
+
+      "isAvailable": true,
+
+      "tags": ["Fish Food", "Economy"]
+    },
+    {
+      "id": 30,
+      "productName": "غذای سگ کوچک Royal Canin",
+      "description": "غذای خشک مخصوص سگ‌های نژاد کوچک با دانه‌بندی مناسب و هضم آسان.",
+      "price": 1890000,
+      "category": "dog-food",
+      "image": "/pic/products/qazasag2.jpg",
+      "rating": 4.9,
+      "stock": 9,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Royal Canin",
+
+      "isAvailable": true,
+
+      "tags": ["Dog Food", "Premium"]
+    },
+    {
+      "id": 31,
+      "productName": "غذای سگ Wanpy",
+      "description": "غذای کامل مخصوص سگ‌های بالغ با پروتئین بالا و طعم طبیعی گوشت.",
+      "price": 980000,
+      "category": "dog-food",
+      "image": "/pic/products/qazasag4.jpg",
+      "rating": 4.7,
+      "stock": 13,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Wanpy",
+
+      "isAvailable": true,
+
+      "tags": ["Dog Food"]
+    },
+    {
+      "id": 32,
+      "productName": "غذای گربه Mofeed (۳ کیلوگرم)",
+      "description": "غذای خشک متعادل برای گربه‌های بالغ، مناسب استفاده روزانه.",
+      "price": 760000,
+      "category": "cat-food",
+      "image": "/pic/products/qazasag5.jpg",
+      "rating": 4.6,
+      "stock": 15,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Mofeed",
+
+      "isAvailable": true,
+
+      "tags": ["Cat Food"]
+    },
+    {
+      "id": 33,
+      "productName": "ویتامین D3 Natora",
+      "description": "مکمل حاوی ویتامین D3 برای تقویت استخوان‌ها و سلامت عمومی حیوانات خانگی.",
+      "price": 310000,
+      "category": "supplement",
+      "image": "/pic/products/qorsesag.jpeg",
+      "rating": 4.5,
+      "stock": 23,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Natora",
+
+      "isAvailable": true,
+
+      "tags": ["Vitamin", "D3"]
+    },
+    {
+      "id": 34,
+      "productName": "سشوار سگ Clarity",
+      "description": "سشوار حرفه‌ای مخصوص سگ با صدای کم و موتور قدرتمند برای خشک کردن سریع.",
+      "price": 2890000,
+      "category": "grooming",
+      "image": "/pic/products/seshovarsogqq.svg",
+      "rating": 4.8,
+      "stock": 5,
+      "oldPrice": 3700000,
+      "discount": 22,
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isNew": true,
+      "brand": "Clarity",
+
+      "isAvailable": true,
+
+      "tags": ["Featured", "Dryer", "Professional", "New"]
+    },
+    {
+      "id": 35,
+      "productName": "سشوار پت خانگی",
+      "description": "سشوار سبک و کم‌مصرف مناسب استفاده خانگی برای سگ و گربه.",
+      "price": 1850000,
+      "category": "grooming",
+      "image": "/pic/products/shernebaoseshovar.jpeg",
+      "rating": 4.5,
+      "stock": 7,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Pet Home",
+
+      "isAvailable": true,
+
+      "tags": ["Dryer"]
+    },
+    {
+      "id": 36,
+      "productName": "مولتی ویتامین سگ Persa",
+      "description": "مکمل غذایی حاوی ویتامین‌ها و مواد معدنی برای افزایش سلامت و نشاط سگ.",
+      "price": 470000,
+      "category": "supplement",
+      "image": "/pic/products/vitaminsag.jpeg",
+      "rating": 4.7,
+      "stock": 16,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "brand": "Persa",
+
+      "isAvailable": true,
+
+      "tags": ["Supplement", "Dog"]
+    },
+    {
+      "id": 37,
+      "productName": "کیف حمل سگ RoyalMAN",
+      "description": "کیف حمل سبک و مقاوم با دریچه‌های تهویه و دسته ارگونومیک، مناسب استفاده روزانه و سفر.",
+      "price": 2150000,
+      "category": "accessories",
+      "image": "/pic/products/zipoboxdogsamll.jpg",
+      "rating": 4.7,
+      "stock": 9,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "RoyalMAN",
+
+      "isAvailable": true,
+
+      "tags": ["Carrier", "Dog"]
+    },
+    {
+      "id": 38,
+      "productName": "غذای سگ Mofeed (۳ کیلوگرم)",
+      "description": "غذای خشک کامل مناسب سگ‌های بالغ با پروتئین بالا، ویتامین‌ها و مواد معدنی ضروری.",
+      "price": 780000,
+      "category": "dog-food",
+      "image": "/pic/products/ضشظشسشل۱.jpg",
+      "rating": 4.8,
+      "stock": 12,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Mofeed",
+
+      "isAvailable": true,
+
+      "tags": ["Dog Food"]
+    },
+    {
+      "id": 39,
+      "productName": "کیف حمل گربه Mook",
+      "description": "کیف حمل شیک و مقاوم با طراحی مدرن، مناسب گربه‌ها و حیوانات خانگی کوچک.",
+      "price": 1980000,
+      "category": "accessories",
+      "image": "/pic/products/bagcatmaxi.webp",
+      "rating": 4.6,
+      "stock": 11,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Mook",
+
+      "isAvailable": true,
+
+      "tags": ["Carrier", "Cat"]
+    },
+    {
+      "id": 40,
+      "productName": "اسباب‌بازی گربه HomePUSH",
+      "description": "اسباب‌بازی تعاملی مناسب افزایش تحرک، سرگرمی و کاهش استرس گربه.",
+      "price": 290000,
+      "category": "toy",
+      "image": "/pic/products/dbazigorbe4.webp",
+      "rating": 4.8,
+      "stock": 22,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "HomePUSH",
+
+      "isAvailable": true,
+
+      "tags": ["Toy", "Interactive", "Cat"]
+    },
+    {
+      "id": 41,
+      "productName": "اسباب‌بازی سگ Trixie",
+      "description": "اسباب‌بازی مقاوم مناسب بازی روزانه و تقویت فعالیت بدنی سگ‌ها.",
+      "price": 340000,
+      "category": "toy",
+      "image": "/pic/products/bazisag1.webp",
+      "rating": 4.6,
+      "stock": 18,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Trixie",
+
+      "isAvailable": true,
+
+      "tags": ["Toy", "Dog"]
+    },
+    {
+      "id": 42,
+      "productName": "باکس حمل سگ و گربه سایز ۴ پانیتو",
+      "description": "باکس حمل بزرگ با بدنه مقاوم، تهویه مناسب و قفل ایمن برای سفر.",
+      "price": 2350000,
+      "category": "accessories",
+      "image": "/pic/products/boxsqodo.webp",
+      "rating": 4.8,
+      "stock": 7,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Panito",
+
+      "isAvailable": true,
+
+      "tags": ["Carrier", "Travel"]
+    },
+    {
+      "id": 43,
+      "productName": "پک کامل نظافت NaniKiti",
+      "description": "مجموعه کامل برس، شانه، ناخن‌گیر و لوازم بهداشتی برای مراقبت از حیوانات خانگی.",
+      "price": 990000,
+      "category": "grooming",
+      "image": "/pic/products/packkamelnezafat.webp",
+      "rating": 4.9,
+      "stock": 10,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "NaniKiti",
+
+      "isAvailable": true,
+
+      "tags": ["Featured", "Best Seller", "Grooming", "New"]
+    },
+    {
+      "id": 44,
+      "productName": "قلاده گربه",
+      "description": "قلاده سبک و قابل تنظیم با قفل ایمن، مناسب استفاده روزمره.",
+      "price": 210000,
+      "category": "accessories",
+      "image": "/pic/products/qalade3.webp",
+      "rating": 4.5,
+      "stock": 20,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "LOO",
+
+      "isAvailable": true,
+
+      "tags": ["Collar", "Cat"]
+    },
+    {
+      "id": 45,
+      "productName": "قلاده گربه LOO",
+      "description": "قلاده نرم و بادوام با طراحی زیبا و قابلیت تنظیم برای انواع گربه.",
+      "price": 240000,
+      "category": "accessories",
+      "image": "/pic/products/qalade5.webp",
+      "rating": 4.7,
+      "stock": 17,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "LOO",
+
+      "isAvailable": true,
+
+      "tags": ["Collar", "Cat"]
+    },
+    {
+      "id": 46,
+      "productName": "قلاده پلاستیکی گربه",
+      "description": "قلاده مقاوم و سبک با سگک ایمن، مناسب استفاده روزانه.",
+      "price": 180000,
+      "category": "accessories",
+      "image": "/pic/products/qaladegorbe1.webp",
+      "rating": 4.4,
+      "stock": 25,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Pet Collar",
+
+      "isAvailable": true,
+
+      "tags": ["Collar", "Cat"]
+    },
+    {
+      "id": 47,
+      "productName": "قطره مولتی ویتامین گربه EuroPET",
+      "description": "قطره ویتامینی برای تقویت سیستم ایمنی، سلامت پوست و افزایش اشتهای گربه.",
+      "price": 390000,
+      "category": "supplement",
+      "image": "/pic/products/qatrecat.webp",
+      "rating": 4.8,
+      "stock": 13,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "EuroPET",
+
+      "isAvailable": true,
+
+      "tags": ["Vitamin", "Cat"]
+    },
+    {
+      "id": 48,
+      "productName": "غذای گربه Relaxy",
+      "description": "غذای خشک با کیفیت مناسب گربه‌های بالغ، سرشار از پروتئین و مواد معدنی.",
+      "price": 670000,
+      "category": "cat-food",
+      "image": "/pic/products/qazagorbe3.webp",
+      "rating": 4.6,
+      "stock": 16,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Relaxy",
+
+      "isAvailable": true,
+
+      "tags": ["Cat Food"]
+    },
+    {
+      "id": 49,
+      "productName": "غذای گربه Mofeed (۲ کیلوگرم)",
+      "description": "غذای خشک کامل مناسب استفاده روزانه با هضم آسان و طعم دلچسب.",
+      "price": 540000,
+      "category": "cat-food",
+      "image": "/pic/products/azagorbe5.webp",
+      "rating": 4.7,
+      "stock": 15,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Mofeed",
+
+      "isAvailable": true,
+
+      "tags": ["Cat Food"]
+    },
+    {
+      "id": 50,
+      "productName": "غذای ماهی Tropical",
+      "description": "غذای تخصصی انواع ماهیان زینتی با ترکیبات مغذی و هضم آسان.",
+      "price": 360000,
+      "category": "fish-food",
+      "image": "/pic/products/qazamahi4.webp",
+      "rating": 4.8,
+      "stock": 19,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Tropical",
+
+      "isAvailable": true,
+
+      "tags": ["Fish Food", "Premium"]
+    },
+    {
+      "id": 51,
+      "productName": "موش اسباب‌بازی گربه",
+      "description": "اسباب‌بازی پارچه‌ای مناسب سرگرمی، شکار و افزایش فعالیت گربه.",
+      "price": 165000,
+      "category": "toy",
+      "image": "/pic/products/bazigorbe.jpg",
+      "rating": 4.5,
+      "stock": 28,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Cat Mouse",
+
+      "isAvailable": true,
+
+      "tags": ["Toy", "Cat"]
+    },
+    {
+      "id": 52,
+      "productName": "اسباب‌بازی اتوماتیک گربه",
+      "description": "اسباب‌بازی هوشمند با حرکت خودکار برای سرگرمی و افزایش تحرک گربه.",
+      "price": 890000,
+      "category": "toy",
+      "image": "/pic/products/bazigorbe2.jpeg",
+      "rating": 4.9,
+      "stock": 8,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Smart Pet",
+
+      "isAvailable": true,
+
+      "tags": ["Interactive", "Toy", "Cat"]
+    },
+    {
+      "id": 53,
+      "productName": "اسباب‌بازی سگ Yoran",
+      "description": "اسباب‌بازی مقاوم مناسب سگ‌های کوچک، قابل شست‌وشو و مناسب بازی روزانه.",
+      "price": 310000,
+      "category": "toy",
+      "image": "/pic/products/bazisag3.jpeg",
+      "rating": 4.7,
+      "stock": 14,
+      "oldPrice": 0,
+      "discount": 0,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isNew": false,
+      "brand": "Yoran",
+
+      "isAvailable": true,
+
+      "tags": ["Toy", "Dog"]
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "راهنمای کامل نگهداری سگ در آپارتمان",
+      "slug": "complete-dog-care-in-apartment",
+      "description": "آموزش کامل نگهداری سگ در محیط آپارتمان، انتخاب نژاد مناسب، تغذیه، پیاده‌روی، آموزش و نکات بهداشتی.",
+      "excerpt": "اگر قصد دارید یک سگ را در محیط آپارتمان نگهداری کنید، باید با اصولی مانند انتخاب نژاد مناسب، برنامه غذایی، آموزش، پیاده‌روی و رعایت بهداشت آشنا باشید. در این مقاله تمام نکات ضروری را بررسی کرده‌ایم.",
+      "content": "نگهداری سگ در محیط آپارتمان برخلاف تصور بسیاری از افراد کاملاً امکان‌پذیر است، اما نیازمند رعایت اصول مشخصی است. اولین قدم، انتخاب نژادی متناسب با فضای زندگی شماست. نژادهایی مانند پامرانین، شیتزو، پودل و کاوالیر معمولاً برای زندگی در آپارتمان مناسب‌تر هستند. پس از انتخاب سگ، باید محیط خانه را برای ورود او آماده کنید؛ محل خواب، ظرف آب و غذا، اسباب‌بازی و وسایل بهداشتی از ضروری‌ترین تجهیزات هستند. تغذیه منظم با غذای استاندارد، واکسیناسیون به‌موقع، مراجعه دوره‌ای به دامپزشک و پیاده‌روی روزانه نقش مهمی در سلامت جسم و روح حیوان دارند. همچنین آموزش دستشویی، فرمان‌های اولیه و اجتماعی شدن سگ باید از سنین پایین آغاز شود. رعایت این نکات باعث می‌شود هم حیوان سالم‌تر باشد و هم زندگی مشترک شما با آرامش بیشتری ادامه پیدا کند.",
+      "thumbnail": "/pic/blog/blogdog1.svg",
+      "coverImage": "/pic/blog/blogdog1.svg",
+      "author": {
+        "name": "تیم تولید محتوای Shopet",
+        "avatar": "/pic/blog/authors/shopet.png",
+        "role": "کارشناس حیوانات خانگی"
+      },
+      "category": "سگ",
+      "badge": "مقاله جدید",
+      "tags": ["سگ", "نگهداری", "آپارتمان", "آموزش", "تغذیه"],
+      "publishDate": "2025-08-22",
+      "updatedAt": "2025-08-25",
+      "readingTime": "8 دقیقه",
+      "isFeatured": true,
+      "status": "published"
+    },
+
+    {
+      "id": 2,
+      "title": "۱۰ غذای ممنوعه برای گربه که هر صاحب سگ باید بداند",
+      "slug": "10-dangerous-foods-for-cats",
+      "description": "مواد غذایی خطرناک برای گربه‌ها که می‌توانند باعث مسمومیت یا آسیب‌های جدی شوند.",
+      "excerpt": "بسیاری از غذاهایی که انسان‌ها روزانه مصرف می‌کنند برای گربه‌ها خطرناک هستند. در این مقاله مهم‌ترین مواد غذایی ممنوعه و جایگزین‌های مناسب آن‌ها را معرفی کرده‌ایم.",
+      "content": "گربه‌ها سیستم گوارش بسیار حساسی دارند و بسیاری از خوراکی‌های معمول انسان برای آن‌ها خطرناک است. شکلات، پیاز، سیر، انگور، کشمش، آووکادو، الکل، نوشیدنی‌های کافئین‌دار، استخوان پخته و شیرینی‌های حاوی زایلیتول از مهم‌ترین مواد غذایی ممنوعه هستند. مصرف هر یک از این مواد می‌تواند باعث مسمومیت، آسیب کلیوی، مشکلات گوارشی یا حتی مرگ حیوان شود. بهترین انتخاب برای تغذیه گربه استفاده از غذای خشک و کنسروهای استاندارد مخصوص گربه است که تمام نیازهای تغذیه‌ای او را تأمین می‌کنند. همچنین همیشه آب تازه و تمیز در اختیار حیوان قرار دهید و از دادن غذاهای چرب یا پرادویه خودداری کنید.",
+      "thumbnail": "/pic/blog/blogdog2.svg",
+      "coverImage": "/pic/blog/blogdog2.svg",
+      "author": {
+        "name": "تیم تولید محتوای Shopet",
+        "avatar": "/pic/blog/authors/shopet.png",
+        "role": "کارشناس تغذیه حیوانات"
+      },
+      "category": "گربه",
+      "badge": "تغذیه",
+      "tags": ["گربه", "تغذیه", "سلامت", "غذای گربه"],
+      "publishDate": "2025-08-18",
+      "updatedAt": "2025-08-18",
+      "readingTime": "6 دقیقه",
+      "isFeatured": true,
+      "status": "published"
+    },
+
+    {
+      "id": 3,
+      "title": "وسایل ضروری که قبل از آوردن حیوان خانگی سگ باید تهیه کنید",
+      "slug": "essential-pet-accessories",
+      "description": "معرفی مهم‌ترین لوازم موردنیاز برای شروع نگهداری از حیوانات خانگی.",
+      "excerpt": "اگر قصد دارید برای اولین بار از یک حیوان خانگی نگهداری کنید، بهتر است قبل از ورود حیوان تمام وسایل ضروری را تهیه کنید تا روزهای اول بدون دغدغه سپری شود.",
+      "content": "ورود یک حیوان خانگی به خانه نیازمند آماده‌سازی محیط است. مهم‌ترین وسایلی که باید از قبل تهیه شوند شامل ظرف آب و غذا، غذای مناسب، قلاده، باکس حمل، جای خواب، اسباب‌بازی، برس، شامپو، ناخن‌گیر، تشویقی و محصولات بهداشتی هستند. انتخاب محصولات باکیفیت علاوه بر افزایش راحتی حیوان، از بروز بسیاری از مشکلات سلامتی جلوگیری می‌کند. همچنین بهتر است وسایل متناسب با سن، اندازه و نژاد حیوان انتخاب شوند تا بیشترین کارایی را داشته باشند. تهیه این تجهیزات از همان ابتدا باعث می‌شود حیوان سریع‌تر با محیط جدید سازگار شود و استرس کمتری را تجربه کند.",
+      "thumbnail": "/pic/blog/blogdog3.svg",
+      "coverImage": "/pic/blog/blogdog3.svg",
+      "author": {
+        "name": "تیم تولید محتوای Shopet",
+        "avatar": "/pic/blog/authors/shopet.png",
+        "role": "کارشناس محصولات حیوانات"
+      },
+      "category": "لوازم",
+      "badge": "راهنمای خرید",
+      "tags": ["لوازم", "نگهداری", "خرید", "حیوان خانگی"],
+      "publishDate": "2025-08-15",
+      "updatedAt": "2025-08-17",
+      "readingTime": "7 دقیقه",
+      "isFeatured": false,
+      "status": "published"
+    }
+  ]
+}

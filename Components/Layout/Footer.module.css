@@ -1,0 +1,208 @@
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+
+  padding: 80px 100px;
+
+  background-image: url("/pic/footerpic.svg");
+
+  background-repeat: no-repeat;
+
+  background-position: center;
+
+  background-size: cover;
+
+  min-height: 300px;
+
+  overflow: hidden;
+}
+
+/* خط چین بالای فوتر */
+.footer::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  border-top: 1px dashed #ff7a00;
+}
+
+.column {
+  /* flex: 1; */
+  width: 260px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.column h4 {
+  color: #ff7a00;
+  margin-bottom: 10px;
+}
+
+.column a {
+  text-decoration: none;
+
+  color: #555;
+
+  transition: 0.3s;
+}
+
+.column a:hover {
+  color: #ff7a00;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.logoBox h3 {
+  color: #ff7a00;
+}
+
+.description {
+  line-height: 2;
+  color: #666;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #ff7a00;
+  font-weight: 600;
+}
+
+.copyRight {
+  position: relative;
+
+  /* margin-top: 30px; */
+  padding: 25px 0;
+
+  text-align: center;
+}
+
+/* خط چین بالای متن کپی‌رایت */
+.copyRight::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 85%;
+
+  border-top: 1px dashed #ff7a00;
+}
+
+.copyRight p {
+  color: #666;
+  font-size: 15px;
+}
+
+.copyRight span {
+  color: #ff7a00;
+  font-weight: 700;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .footer {
+    padding: 50px 40px;
+    gap: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding: 40px 20px;
+    gap: 35px;
+  }
+
+  .column {
+    width: 100%;
+    align-items: center;
+  }
+
+  .logoBox {
+    justify-content: center;
+  }
+
+  .description {
+    max-width: 350px;
+    line-height: 1.9;
+  }
+
+  .phone {
+    justify-content: center;
+  }
+
+  .copyRight {
+    padding: 20px 15px;
+  }
+
+  .copyRight p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .copyRight::before {
+    width: 92%;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .footer {
+    padding: 35px 15px;
+    gap: 30px;
+  }
+
+  .logoBox img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logoBox h3 {
+    font-size: 20px;
+  }
+
+  .column h4 {
+    font-size: 18px;
+  }
+
+  .column a {
+    font-size: 15px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .phone {
+    font-size: 15px;
+  }
+
+  .copyRight p {
+    font-size: 13px;
+  }
+}

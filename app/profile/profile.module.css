@@ -1,0 +1,255 @@
+.container {
+  max-width: 1400px;
+
+  margin: 50px auto;
+
+  padding: 0 20px;
+}
+
+/* =======================
+   PROFILE CARD
+======================= */
+
+.profileCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 40px;
+
+  padding: 40px;
+
+  border: 1px solid #eee;
+  border-radius: 24px;
+
+  background: white;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.avatarBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 4px solid #f7763d;
+}
+
+.uploadBtn {
+  border: none;
+  background: #f7763d;
+
+  color: white;
+
+  padding: 10px 20px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.uploadBtn:hover {
+  opacity: 0.9;
+}
+
+.userInfo {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.userInfo h1 {
+  color: #222;
+  font-size: 32px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  color: #666;
+}
+
+.infoItem svg {
+  color: #f7763d;
+}
+
+.editBtn {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+
+  background: #f7763d;
+  color: white;
+
+  padding: 12px 22px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.editBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* =======================
+   STATS
+======================= */
+
+.stats {
+  margin-top: 40px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.statCard {
+  background: white;
+
+  border: 1px solid #eee;
+  border-radius: 20px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+}
+
+.statCard svg {
+  color: #f7763d;
+
+  margin-bottom: 10px;
+}
+
+.statCard h3 {
+  font-size: 28px;
+
+  margin-bottom: 10px;
+
+  color: #222;
+}
+
+.statCard p {
+  color: #777;
+}
+
+/* =======================
+   ORDERS
+======================= */
+
+.orders {
+  margin-top: 40px;
+
+  background: white;
+
+  border: 1px solid #eee;
+  border-radius: 24px;
+
+  padding: 30px;
+}
+
+.orders h2 {
+  margin-bottom: 25px;
+
+  color: #222;
+}
+
+.order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.order:last-child {
+  border-bottom: none;
+}
+
+.order span:last-child {
+  color: #f7763d;
+  font-weight: 600;
+}
+
+/* =======================
+   LOGOUT
+======================= */
+
+.logout {
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+
+  background: #ff4d4f;
+  color: white;
+
+  padding: 14px 24px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.logout:hover {
+  opacity: 0.9;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media (max-width: 900px) {
+  .profileCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .userInfo {
+    align-items: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .order {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,218 @@
+.blog {
+  width: calc(100% - 120px);
+  margin: 130px auto;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.heading h2 {
+  font-size: 2.2rem;
+}
+
+.heading a {
+  color: #3a8dff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.blogContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.imageBox {
+  position: relative;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.badges {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+.badges span {
+  background: #3a8dff;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+}
+
+.content {
+  padding: 24px;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  color: #8b8b8b;
+  font-size: 0.9rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.infoItem svg {
+  color: #3a8dff;
+  flex-shrink: 0;
+}
+
+.readMore {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3a8dff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.card:hover .readMore {
+  gap: 14px;
+}
+
+.readMore svg {
+  transition: 0.3s;
+}
+
+.card:hover .readMore svg {
+  transform: translateX(-4px);
+}
+
+.content h3 {
+  font-size: 1.35rem;
+  line-height: 35px;
+  margin-bottom: 14px;
+}
+
+.content p {
+  color: #777;
+  line-height: 30px;
+  font-size: 0.95rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+  .blog {
+    width: calc(100% - 40px);
+    margin: 80px auto;
+  }
+
+  .heading {
+    margin-bottom: 30px;
+  }
+
+  .heading h2 {
+    font-size: 1.7rem;
+  }
+
+  .heading a {
+    font-size: 14px;
+  }
+
+  .blogContainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    border-radius: 20px;
+  }
+
+  .imageBox img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+  }
+
+  .badges {
+    top: 14px;
+    right: 14px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .badges span {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .info {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .infoItem {
+    gap: 5px;
+  }
+
+  .infoItem svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .content h3 {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+
+  .content p {
+    font-size: 14px;
+    line-height: 28px;
+    -webkit-line-clamp: 2;
+  }
+
+  .readMore {
+    margin-top: 16px;
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .readMore svg {
+    width: 16px;
+    height: 16px;
+  }
+}

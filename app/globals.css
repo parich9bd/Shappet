@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/font/Vazirmatn/Vazirmatn-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Vazirmatn", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
