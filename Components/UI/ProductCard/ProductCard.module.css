@@ -1,5 +1,5 @@
 .card {
-  min-width: 260px;
+  min-width: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,15 +8,13 @@
 
   background: #fff;
 
-  border: 1px solid #eee;
-  border-radius: 24px;
+  border: 1px solid #ececec;
+  border-radius: 22px;
 
   position: relative;
   overflow: hidden;
 
   transition: 0.35s;
-
-  flex-shrink: 0;
 }
 
 .card::before {
@@ -25,27 +23,36 @@
   position: absolute;
   inset: 0;
 
-  border: 2px dashed transparent;
+  border: 2px dashed #f7763d;
   border-radius: inherit;
 
-  transition: 0.35s;
-
   pointer-events: none;
+
+  opacity: 0.8;
+  transition: 0.35s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-
-  background: rgba(247, 118, 61, 0.05);
-
-  box-shadow: 0 18px 40px rgba(247, 118, 61, 0.18);
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(247, 118, 61, 0.18);
 }
 
 .card:hover::before {
-  border-color: #f7763d;
+  border-color: #ff8b2b;
+  opacity: 1;
 }
 
 .card img {
+  width: 170px;
+  height: 170px;
+
+  object-fit: contain;
+
+  padding: 14px;
+
+  background: #fafafa;
+  border-radius: 18px;
+
   transition: 0.4s;
 }
 
@@ -59,8 +66,8 @@
   top: 16px;
   left: 16px;
 
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
 
   display: flex;
   justify-content: center;
@@ -69,48 +76,58 @@
   border: none;
   border-radius: 50%;
 
-  background: #fff;
+  background: white;
 
   cursor: pointer;
 
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 
   transition: 0.3s;
 }
 
 .favoriteBtn:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .favoriteBtn:hover svg {
-  fill: #ff4d6d;
   color: #ff4d6d;
+  fill: #ff4d6d;
 }
 
 .card h3 {
-  margin: 18px 0 12px;
+  margin-top: 20px;
 
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: 18px;
+  font-weight: 700;
 
-  height: 58px;
+  color: #222;
+
+  text-align: center;
+
+  line-height: 1.7;
+
+  height: 60px;
 }
 
 .price {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   gap: 8px;
 
-  margin-bottom: 24px;
+  margin: 18px 0 22px;
+
+  font-size: 15px;
+
+  color: #666;
 }
 
 .price span {
   font-size: 24px;
   font-weight: 800;
 
-  color: #2eaf5b;
+  color: #27ae60;
 
   transition: 0.3s;
 }
@@ -128,6 +145,10 @@
   gap: 12px;
 
   margin-top: auto;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #f2f2f2;
 }
 
 .cartBtn,
@@ -138,6 +159,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 10px;
 
   border-radius: 14px;
@@ -145,16 +167,17 @@
   font-size: 15px;
   font-weight: 700;
 
-  transition: 0.3s;
-
   font-family: inherit;
+
+  transition: all 0.3s ease;
 }
 
 .cartBtn {
   border: none;
 
-  background: #eef8ff;
-  color: #2587ff;
+  background: #f7763d;
+
+  color: white;
 
   cursor: pointer;
 }
@@ -164,37 +187,57 @@
 }
 
 .cartBtn:hover {
-  background: #f7763d;
-  color: white;
+  background: #e7632c;
 
-  box-shadow: 0 10px 22px rgba(247, 118, 61, 0.28);
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 20px rgba(247, 118, 61, 0.3);
 }
 
 .cartBtn:hover svg {
-  color: white;
   transform: rotate(-10deg);
 }
 
 .detailsBtn {
   text-decoration: none;
 
-  border: 1px solid #f7763d;
+  border: 1px solid #ddd;
 
   background: white;
-  color: #f7763d;
+
+  color: #444;
 }
 
 .detailsBtn:hover {
-  background: #f7763d;
-  color: white;
+  border-color: #f7763d;
+
+  color: #f7763d;
+
+  background: #fff8f5;
 }
 
 @media (max-width: 768px) {
   .card {
     min-width: 85%;
+    padding: 18px;
+  }
+
+  .card img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .card h3 {
+    font-size: 17px;
   }
 
   .price span {
     font-size: 21px;
+  }
+
+  .cartBtn,
+  .detailsBtn {
+    height: 45px;
+    font-size: 14px;
   }
 }

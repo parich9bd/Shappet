@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 
 function ProductCard({
   product,
-
   variant = "shop",
 }) {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
@@ -50,19 +49,16 @@ function ProductCard({
         قیمت :<span>{product.price.toLocaleString("fa-IR")} تومان</span>
       </p>
 
-      <button
-        className={styles.cartBtn}
-        onClick={() => {
-          console.log(product);
-          addToCart(product);
-        }}
-      >
-        <ShoppingCart size={20} />
-        افزودن به سبد خرید
-      </button>
-      <Link href={`/products/${product.id}`} className={styles.detailsBtn}>
-        مشاهده جزئیات
-      </Link>
+      <div className={styles.actions}>
+        <button className={styles.cartBtn} onClick={() => addToCart(product)}>
+          <ShoppingCart size={20} />
+          افزودن به سبد خرید
+        </button>
+
+        <Link href={`/products/${product.id}`} className={styles.detailsBtn}>
+          مشاهده جزئیات
+        </Link>
+      </div>
     </div>
   );
 }

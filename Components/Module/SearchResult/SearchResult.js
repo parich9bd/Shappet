@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-
 import { useSearch } from "@/context/SearchContext";
 import SearchLoader from "@/Components/UI/SearchLoader/SearchLoader";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
