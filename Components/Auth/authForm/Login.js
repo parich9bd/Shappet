@@ -7,13 +7,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 import { Phone, Lock, X } from "lucide-react";
-import {toEnglishDigits} from "@/utils/convertDigits"
+import { toEnglishDigits } from "@/utils/convertDigits";
 import styles from "./Login.module.css";
 
 import { loginSchema } from "@/schemas/loginSchema";
 import { useSendOtp } from "@/hooks/useLogin";
 
-function Login({ onClose }) {
+function Login({ onClose, onLogin }) {
   const router = useRouter();
   const [otpSent, setOtpSent] = useState(false);
   const sendOtp = useSendOtp(setOtpSent);
@@ -47,12 +47,18 @@ function Login({ onClose }) {
     }
 
     if (code === savedOtp) {
-      localStorage.setItem("token", `fake-token`);
+      localStorage.setItem("token", "fake-token");
+
+      localStorage.setItem("phone", phone);
 
       localStorage.removeItem("otp");
 
+      onLogin?.(phone);
+
       toast.success("ورود موفق");
+
       onClose();
+
       router.push("/");
     } else {
       toast.error("کد وارد شده اشتباه است");

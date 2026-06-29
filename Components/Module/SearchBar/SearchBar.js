@@ -4,11 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./searchBar.module.css";
 import Login from "@/Components/Auth/authForm/Login";
+import HeaderMenu from "./Menu";
+
 import { useState, useEffect, useRef } from "react";
 import { getProducts } from "@/Services/productService";
 import { useSearch } from "@/context/SearchContext";
 import { useFavorites } from "@/context/FavoritesContext";
 import { useCart } from "@/context/CartContext";
+import { toPersianDigits } from "@/utils/convertDigits";
+
 import {
   Search,
   Menu,
@@ -22,8 +26,8 @@ import {
   CircleHelp,
   User,
   LogIn,
+  BadgeCheck,
 } from "lucide-react";
-import HeaderMenu from "./Menu";
 
 function SearchBar() {
   const { query, setQuery, setLoading, setResults } = useSearch();
@@ -34,6 +38,17 @@ function SearchBar() {
   const userMenuRef = useRef(null);
   const { favorites } = useFavorites();
   const { cart } = useCart();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const savedPhone = localStorage.getItem("phone");
+
+    if (savedPhone) {
+      setUser({
+        phone: savedPhone,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,7 +69,6 @@ function SearchBar() {
     };
   }, []);
 
-  // SearchBar.tsx
   useEffect(() => {
     if (!query.trim()) {
       setLoading(false);
@@ -62,7 +76,7 @@ function SearchBar() {
       return;
     }
 
-    setLoading(true); // ← اینجا، قبل از delay
+    setLoading(true);
 
     const delay = setTimeout(async () => {
       try {
@@ -185,17 +199,24 @@ function SearchBar() {
                     پروفایل
                   </Link>
 
-                  <button
-                    type="button"
-                    className={styles.loginBtn}
-                    onClick={() => {
-                      setShowMenu(false);
-                      setShowLoginModal(true);
-                    }}
-                  >
-                    <LogIn size={18} />
-                    ورود
-                  </button>
+                  {user ? (
+                    <div className={styles.loginBtn}>
+                      <BadgeCheck size={18} color="#22c55e" />
+                      {toPersianDigits(user.phone)}
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.loginBtn}
+                      onClick={() => {
+                        setShowMenu(false);
+                        setShowLoginModal(true);
+                      }}
+                    >
+                      <LogIn size={18} />
+                      ورود
+                    </button>
+                  )}
                 </div>
               )}
             </div>
@@ -252,23 +273,37 @@ function SearchBar() {
                 پروفایل
               </Link>
 
-              <button
-                type="button"
-                className={styles.loginBtn}
-                onClick={() => {
-                  setShowMenu(false);
-                  setShowLoginModal(true);
-                }}
-              >
-                <User size={18} />
-                ورود
-              </button>
+              {user ? (
+                <div className={styles.loginBtn}>
+                  <BadgeCheck size={18} color="#22c55e" />
+                  {toPersianDigits(user.phone)}
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className={styles.loginBtn}
+                  onClick={() => {
+                    setShowMenu(false);
+                    setShowLoginModal(true);
+                  }}
+                >
+                  <LogIn size={18} />
+                  ورود
+                </button>
+              )}
             </div>
           )}
         </div>
       </section>
       <HeaderMenu className={styles.menuDesk} />
-      {showLoginModal && <Login onClose={() => setShowLoginModal(false)} />}
+      {showLoginModal && (
+        <Login
+          onClose={() => setShowLoginModal(false)}
+          onLogin={(phone) => {
+            setUser({ phone });
+          }}
+        />
+      )}
     </>
   );
 }

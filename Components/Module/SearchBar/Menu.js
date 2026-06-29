@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
+import Link from "next/link";
 import styles from "./headerMeanu.module.css";
 
 import {
@@ -20,10 +20,6 @@ function HeaderMenu() {
 
   return (
     <header className={styles.header}>
-      {/* ================= Search ================= */}
-
-      {/* ================= Navigation ================= */}
-
       <div className={styles.container}>
         <nav className={styles.nav}>
           {/* Desktop Menu */}
@@ -59,10 +55,8 @@ function HeaderMenu() {
 
           <div className={styles.phone}>
             <Phone size={18} />
-            <span>۰۹۱۷۱۲۳۴۵۶۷</span>
+            <span>۰۹۰۱۱۲۲۰۳۳۷</span>
           </div>
-
-          {/* Mobile Hamburger */}
 
           <button
             className={styles.hamburger}
@@ -72,8 +66,6 @@ function HeaderMenu() {
           </button>
         </nav>
       </div>
-
-      {/* Mobile Drawer */}
     </header>
   );
 }

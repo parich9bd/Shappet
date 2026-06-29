@@ -1,9 +1,10 @@
-import { Toaster } from "react-hot-toast";
-
 import "./globals.css";
+
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import Header from "@/Components/Layout/Header";
 import Footer from "@/Components/Layout/Footer";
+
+import { Toaster } from "react-hot-toast";
 import { SearchProvider } from "@/context/SearchContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import { CartProvider } from "@/context/CartContext";
@@ -15,15 +16,28 @@ export const metadata = {
   },
 
   description:
-    "فروشگاه اینترنتی شاپت، خرید غذای سگ، غذای گربه، مکمل، لوازم نگهداری، اسباب‌بازی و محصولات بهداشتی حیوانات خانگی.",
-  keywords: [
-    "شاپت",
-    "فروشگاه حیوانات",
-    "غذای سگ",
-    "غذای گربه",
-    "لوازم حیوانات",
-    "Pet Shop",
+    "فروشگاه اینترنتی شاپت، خرید غذای سگ، غذای گربه، مکمل، لوازم نگهداری و...",
+
+  authors: [
+    {
+      name: "Parichehr",
+      url: "https://github.com/Parich9abd",
+    },
   ],
+
+  creator: "Parichehr",
+
+  publisher: "Shopet",
+
+  applicationName: "Shopet",
+
+  generator: "Next.js",
+
+  category: "Pet Shop",
+
+  metadataBase: new URL("https://shopet.ir"),
+
+  keywords: ["شاپت", "غذای سگ", "غذای گربه", "Pet Shop"],
 
   icons: {
     icon: "/icon/Group.svg",
@@ -32,11 +46,12 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Shopet | فروشگاه آنلاین حیوانات خانگی",
-    description:
-      "خرید انواع محصولات سگ، گربه، پرندگان و آبزیان با بهترین قیمت.",
+    title: "Shopet",
+    description: "فروشگاه آنلاین حیوانات خانگی",
     url: "https://shopet.ir",
     siteName: "Shopet",
+    locale: "fa_IR",
+    type: "website",
     images: [
       {
         url: "/icon/Group.svg",
@@ -44,9 +59,6 @@ export const metadata = {
         height: 630,
       },
     ],
-
-    locale: "fa_IR",
-    type: "website",
   },
 
   twitter: {

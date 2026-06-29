@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <>
       {query ? (
-        <SearchResult/>
+        <SearchResult />
       ) : (
         <>
           <LableView />

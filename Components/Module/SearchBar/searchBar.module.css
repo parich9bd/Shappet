@@ -3,7 +3,6 @@
   height: 100px;
   margin: 0 auto;
   box-sizing: border-box;
-
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -12,10 +11,6 @@
 .menuDesk {
   display: none;
 }
-
-/* ===========================
-   Logo
-=========================== */
 
 .logoBox {
   display: flex;
@@ -42,28 +37,18 @@
   position: absolute;
   top: 70px;
   right: 0;
-
   width: 280px;
-
   padding: 12px 16px;
-
   background: #fff;
   color: #444;
-
   border-radius: 14px;
-
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-
   line-height: 28px;
   font-size: 14px;
-
   opacity: 0;
   visibility: hidden;
-
   transform: translateY(-10px);
-
   transition: 0.3s;
-
   z-index: 1000;
 }
 
@@ -75,9 +60,7 @@
 
   width: 16px;
   height: 16px;
-
   background: white;
-
   transform: rotate(45deg);
 }
 
@@ -86,10 +69,6 @@
   visibility: visible;
   transform: translateY(0);
 }
-
-/* ===========================
-   Search
-=========================== */
 
 .searchBox {
   position: relative;
@@ -104,10 +83,8 @@
 
   border: 1px solid #ddd;
   border-radius: 10px;
-
   outline: none;
   font-family: inherit;
-
   transition: 0.3s;
 }
 
@@ -132,9 +109,7 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-/* ===========================
-   Info
-=========================== */
+
 
 .infoBox {
   display: flex;
@@ -142,10 +117,6 @@
   gap: 6px;
   flex-shrink: 0;
 }
-
-/* ===========================
-   User Menu
-=========================== */
 
 .userMenu {
   position: relative;
@@ -163,10 +134,6 @@
   transform: rotate(90deg) scale(1.15);
 }
 
-/* ===========================
-   Popup
-=========================== */
-
 .userPopup {
   position: absolute;
   top: 50px;
@@ -177,23 +144,16 @@
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 18px;
-
   box-shadow:
     0 10px 35px rgba(0, 0, 0, 0.15),
     inset 0 1px 1px rgba(255, 255, 255, 0.5);
-
   overflow: hidden;
   z-index: 1000;
 
   animation: popup 0.25s ease;
 }
-
-/* ===========================
-   Close Button
-=========================== */
 
 .closeBtn {
   width: 100%;
@@ -202,12 +162,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
   background: none;
   border: none;
-
   cursor: pointer;
-
   transition: 0.3s;
 }
 
@@ -220,9 +177,7 @@
   transform: rotate(180deg);
 }
 
-/* ===========================
-   Animation
-=========================== */
+
 
 @keyframes popup {
   from {
@@ -236,9 +191,7 @@
   }
 }
 
-/* ===========================
-   Desktop Actions
-=========================== */
+
 
 .desktopActions {
   display: flex;
@@ -246,9 +199,6 @@
   gap: 28px;
 }
 
-/* ===========================
-   Info Box
-=========================== */
 
 .infoBox {
   display: flex;
@@ -256,9 +206,7 @@
   gap: 12px;
 
   padding: 10px 14px;
-
   border-radius: 16px;
-
   transition: 0.35s ease;
   cursor: default;
 }
@@ -299,10 +247,6 @@
   color: #888;
 }
 
-/* ===========================
-   Icons
-=========================== */
-
 .iconsBox {
   display: flex;
   align-items: center;
@@ -312,16 +256,12 @@
 .iconsBox a {
   width: 44px;
   height: 44px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   text-decoration: none;
   color: #444;
-
   transition: 0.3s;
-
   background: #fff;
 }
 
@@ -339,10 +279,6 @@
   transform: scale(1.15);
 }
 
-/* ===========================
-   User Menu
-=========================== */
-
 .userMenu {
   position: relative;
 }
@@ -350,77 +286,52 @@
 .userIcon {
   width: 44px;
   height: 44px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 50%;
-
   cursor: pointer;
-
   transition: 0.35s;
-
   background: white;
 }
 
 .userIcon:hover {
   background: #f7763d;
-
   color: white;
-
   transform: rotate(12deg) scale(1.08);
-
   box-shadow: 0 10px 22px rgba(247, 118, 61, 0.35);
 }
 
-/* ===========================
-   Popup
-=========================== */
 .userPopup {
   position: absolute;
   top: 55px;
   left: 0;
-
   width: 220px;
   padding: 12px;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   background: #fff;
   border: 1px solid #ececec;
   border-radius: 16px;
-
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-
   animation: popup 0.25s ease;
 }
 .userPopup a {
   width: 100%;
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
   gap: 12px;
   padding: 0 16px;
-
   height: 48px;
-
   border-radius: 12px;
-
   text-decoration: none;
-
   background: #f8fafc;
-
   color: #333;
-
   font-size: 14px;
   font-weight: 600;
-
   transition: 0.3s;
 }
 
@@ -436,9 +347,7 @@
 }
 .userPopup hr {
   margin: 0;
-
   border: none;
-
   border-top: 1px solid #ececec;
 }
 .userPopup a svg {
@@ -447,93 +356,63 @@
 
 .userPopup a:hover svg {
   transform: translateX(-4px);
-
   color: #f7763d;
 }
 
 .userIcon {
   width: 46px;
   height: 46px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 14px;
-
   background: linear-gradient(135deg, #fff, #fff7f3);
-
   border: 1px solid #ececec;
-
   color: #555;
-
   cursor: pointer;
-
   transition: .35s;
-
   box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
 
 .userIcon:hover {
   background: #f7763d;
-
   color: white;
-
   border-color: #f7763d;
-
   transform: translateY(-3px) scale(1.08);
-
   box-shadow: 0 14px 28px rgba(247,118,61,.35);
-}.userIcon {
+}
+
+.userIcon {
   width: 46px;
   height: 46px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 14px;
-
   background: linear-gradient(135deg, #fff, #fff7f3);
-
   border: 1px solid #ececec;
-
   color: #555;
-
   cursor: pointer;
-
   transition: .35s;
-
   box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
 
 .userIcon:hover {
   background: #f7753d9f;
-
   color: white;
-
   border-color: #f7763d;
-
   transform: translateY(-3px) scale(1.08);
-
   box-shadow: 0 14px 28px rgba(247,118,61,.35);
 }
-/* ===========================
-   Close Button
-=========================== */
+
 
 .closeBtn {
   width: 100%;
-
   display: flex;
   justify-content: flex-end;
-
   padding: 12px;
-
   border: none;
-
   background: none;
-
   cursor: pointer;
 }
 
@@ -543,23 +422,16 @@
 
 .closeBtn:hover svg {
   color: #f7763d;
-
   transform: rotate(180deg);
 }
 
 .userPopup hr {
   margin: 8px 14px;
-
   border: none;
-
   height: 1px;
-
   background: linear-gradient(to right, transparent, #ddd, transparent);
 }
 
-/* ===========================
-   Animation
-=========================== */
 
 @keyframes popup {
   from {
@@ -605,31 +477,26 @@
   display: flex;
   align-items: center;
   gap: 12px;
-
   padding: 14px 16px;
-
   background: transparent;
   border: none;
-
   color: #333;
   font-size: 14px;
   font-family: inherit;
   text-align: right;
-
   cursor: pointer;
   transition: 0.2s;
 }
+
 
 .loginBtn:hover {
   background: #fafafa;
   color: #f7763d;
 }
 
-/* SearchLoader.module.css */
 .overlay {
   width: 100%;
   padding: 2rem 1rem;
-  /* هیچ position: fixed یا absolute نداری */
 }
 
 .container {
@@ -660,20 +527,15 @@
 
 .badge {
   position: absolute;
-
   top: 3px;
   right: 1px;
-
   min-width: 18px;
   height: 18px;
-
   border-radius: 50%;
   background-color: #f7763d;
   color: #fff;
-
   font-size: 11px;
   font-weight: 700;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -692,53 +554,34 @@
 
 .userTooltip {
   position: absolute;
-
   top: 55px;
   left: 50%;
-
   transform: translateX(-50%) translateY(-8px);
-
   white-space: nowrap;
-
   padding: 8px 14px;
-
   border-radius: 10px;
-
   background: #fff;
   color: #333;
-
   font-size: 12px;
   font-weight: 600;
-
   border: 1px solid #eee;
-
   box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
-
   opacity: 0;
   visibility: hidden;
-
   transition: .25s;
-
   pointer-events: none;
-
   z-index: 1000;
 }
 
 .userTooltip::before {
   content: "";
-
   position: absolute;
-
   top: -6px;
   left: 50%;
-
   transform: translateX(-50%) rotate(45deg);
-
   width: 12px;
   height: 12px;
-
   background: #fff;
-
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;
 }
