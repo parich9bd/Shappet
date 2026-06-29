@@ -25,7 +25,7 @@ function Footer() {
             <Link href="/about">درباره ما</Link>
             <Link href="/contact">تماس با ما</Link>
             <Link href="/faq">سوالات متداول</Link>
-            <Link href="/productsInfo">پیگیری سفارشات</Link>
+            <Link href="/tracking">پیگیری سفارشات</Link>
           </article>
 
           <article className={styles.column}>

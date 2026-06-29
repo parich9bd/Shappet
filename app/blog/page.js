@@ -1,101 +1,75 @@
-import Image from "next/image";
-import { CalendarDays, Clock3, ArrowLeft, BookOpen } from "lucide-react";
+"use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { User, CalendarDays, ArrowUpRight } from "lucide-react";
 import styles from "./blog.module.css";
 
-const posts = [
-  {
-    id: 1,
-    title: "بهترین غذای خشک برای گربه‌ها",
-    description:
-      "راهنمای کامل انتخاب غذای خشک مناسب برای سلامت و رشد گربه شما.",
-    image: "/Images/blog/blog1.jpg",
-    date: "۱۴۰۵/۰۵/۰۱",
-    readTime: "۵ دقیقه",
-  },
-
-  {
-    id: 2,
-    title: "چگونه سگ خود را آموزش دهیم؟",
-    description: "نکات کاربردی برای تربیت سگ‌ها و ایجاد ارتباط بهتر با آن‌ها.",
-    image: "/Images/blog/blog2.jpg",
-    date: "۱۴۰۵/۰۵/۱۰",
-    readTime: "۷ دقیقه",
-  },
-
-  {
-    id: 3,
-    title: "واکسیناسیون حیوانات خانگی",
-    description: "اهمیت واکسیناسیون و برنامه پیشنهادی برای حیوانات خانگی.",
-    image: "/Images/blog/blog3.jpg",
-    date: "۱۴۰۵/۰۵/۱۵",
-    readTime: "۴ دقیقه",
-  },
-];
-
 export default function BlogPage() {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    async function fetchArticles() {
+      const res = await fetch("http://localhost:4000/articles");
+      const data = await res.json();
+
+      setArticles(data);
+    }
+
+    fetchArticles();
+  }, []);
+
   return (
-    <main className={styles.container}>
-      <section className={styles.hero}>
-        <BookOpen size={70} />
+    <section className={styles.container}>
+      <div className={styles.header}>
+        <h1>وبلاگ فروشگاه</h1>
 
-        <h1>وبلاگ شاپت</h1>
+        <p>
+          جدیدترین مقالات آموزشی درباره نگهداری حیوانات خانگی، تغذیه،
+          سلامت و نکات کاربردی
+        </p>
+      </div>
 
-        <p>آموزش، نگهداری، تغذیه و سلامت حیوانات خانگی</p>
-      </section>
+      <div className={styles.grid}>
+        {articles.map((article) => (
+          <Link
+            key={article.id}
+            href={`/blog/${article.slug}`}
+            className={styles.card}
+          >
+            <Image
+              src={article.thumbnail}
+              width={400}
+              height={240}
+              alt={article.title}
+            />
 
-      <section className={styles.featured}>
-        <div className={styles.featuredContent}>
-          <span>مقاله ویژه</span>
+            <div className={styles.content}>
+              <div className={styles.meta}>
+                <span>
+                  <User size={15} />
+                  {article.author.name}
+                </span>
 
-          <h2>راهنمای کامل نگهداری از گربه‌های خانگی</h2>
-
-          <p>هر آنچه برای مراقبت، تغذیه، بهداشت و سلامت گربه خود نیاز دارید.</p>
-
-          <button>
-            مطالعه مقاله
-            <ArrowLeft size={18} />
-          </button>
-        </div>
-
-        <div className={styles.featuredImage}>
-          <Image src="/Images/blog/featured.jpg" fill alt="featured" />
-        </div>
-      </section>
-
-      <section className={styles.posts}>
-        <h2>جدیدترین مقالات</h2>
-
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <article key={post.id} className={styles.card}>
-              <div className={styles.imageWrapper}>
-                <Image src={post.image} fill alt={post.title} />
+                <span>
+                  <CalendarDays size={15} />
+                  {new Date(article.publishDate).toLocaleDateString("fa-IR")}
+                </span>
               </div>
 
-              <div className={styles.content}>
-                <h3>{post.title}</h3>
+              <h3>{article.title}</h3>
 
-                <p>{post.description}</p>
+              <p>{article.excerpt}</p>
 
-                <div className={styles.meta}>
-                  <span>
-                    <CalendarDays size={16} />
-                    {post.date}
-                  </span>
-
-                  <span>
-                    <Clock3 size={16} />
-                    {post.readTime}
-                  </span>
-                </div>
-
-                <button>مطالعه بیشتر</button>
+              <div className={styles.more}>
+                مطالعه مقاله
+                <ArrowUpRight size={18} />
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }

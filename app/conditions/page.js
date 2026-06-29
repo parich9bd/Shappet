@@ -1,125 +1,136 @@
+import styles from "./conditions.module.css";
 import {
   ShieldCheck,
-  Truck,
+  ShoppingBag,
   CreditCard,
+  Truck,
   RotateCcw,
-  FileText,
+  Lock,
+  AlertTriangle,
+  CircleHelp,
 } from "lucide-react";
 
-import styles from "./conditions.module.css";
-
-export default function ConditionsPage() {
+export default function RulesPage() {
   return (
-    <main className={styles.container}>
-      <section className={styles.hero}>
+    <section className={styles.rules}>
+      <div className={styles.hero}>
+        <span>Shopet</span>
+
         <h1>قوانین و مقررات</h1>
 
         <p>
-          استفاده از خدمات فروشگاه شاپت به منزله پذیرش قوانین و شرایط زیر است.
+          استفاده از خدمات فروشگاه Shopet به منزله پذیرش قوانین و شرایط زیر است.
+          لطفاً پیش از ثبت سفارش، این موارد را مطالعه کنید.
         </p>
-      </section>
 
-      <section className={styles.rules}>
+        <small>آخرین بروزرسانی: شهریور ۱۴۰۵</small>
+      </div>
+
+      <div className={styles.grid}>
         <div className={styles.card}>
-          <ShieldCheck size={32} />
-
-          <h3>اصالت کالا</h3>
-
+          <ShoppingBag />
+          <h3>ثبت سفارش</h3>
           <p>
-            تمامی محصولات ارائه شده در شاپت دارای تضمین اصالت بوده و از
-            تأمین‌کنندگان معتبر تهیه می‌شوند.
+            ثبت سفارش پس از پرداخت موفق نهایی شده و امکان پیگیری از طریق پنل
+            کاربری وجود دارد.
           </p>
         </div>
 
         <div className={styles.card}>
-          <Truck size={32} />
-
-          <h3>ارسال سفارش</h3>
-
-          <p>
-            سفارش‌ها پس از ثبت نهایی و تأیید پرداخت در کوتاه‌ترین زمان ممکن
-            پردازش و ارسال خواهند شد.
-          </p>
-        </div>
-
-        <div className={styles.card}>
-          <CreditCard size={32} />
-
+          <CreditCard />
           <h3>پرداخت</h3>
-
           <p>
             تمامی پرداخت‌ها از طریق درگاه‌های امن بانکی انجام می‌شود و اطلاعات
-            مالی کاربران نزد شاپت ذخیره نمی‌شود.
+            مالی کاربران ذخیره نخواهد شد.
           </p>
         </div>
 
         <div className={styles.card}>
-          <RotateCcw size={32} />
-
-          <h3>مرجوعی کالا</h3>
-
+          <Truck />
+          <h3>ارسال سفارش</h3>
           <p>
-            امکان بازگشت کالا طبق شرایط اعلام‌شده و در بازه زمانی مشخص وجود
-            دارد.
+            سفارش‌ها در سریع‌ترین زمان ممکن پردازش و ارسال می‌شوند. زمان تحویل
+            بسته به شهر مقصد متفاوت است.
           </p>
         </div>
-      </section>
 
-      <section className={styles.content}>
-        <div className={styles.ruleBox}>
-          <FileText size={22} />
+        <div className={styles.card}>
+          <RotateCcw />
+          <h3>بازگشت کالا</h3>
+          <p>
+            در صورت وجود ایراد فنی یا ارسال اشتباه، امکان بازگشت کالا طبق شرایط
+            فروشگاه فراهم است.
+          </p>
+        </div>
 
+        <div className={styles.card}>
+          <Lock />
+          <h3>حریم خصوصی</h3>
+          <p>
+            اطلاعات شخصی کاربران نزد Shopet محفوظ بوده و در اختیار شخص یا سازمان
+            دیگری قرار نخواهد گرفت.
+          </p>
+        </div>
+
+        <div className={styles.card}>
+          <ShieldCheck />
+          <h3>ضمانت کیفیت</h3>
+          <p>
+            تمامی محصولات از برندهای معتبر تهیه شده و سلامت و اصالت کالا تضمین
+            می‌شود.
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.notice}>
+        <AlertTriangle />
+
+        <div>
+          <h3>نکته مهم</h3>
+
+          <p>
+            Shopet در هر زمان می‌تواند قوانین و شرایط استفاده از سایت را
+            بروزرسانی کند. ادامه استفاده از سایت به منزله پذیرش نسخه جدید قوانین
+            خواهد بود.
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.faq}>
+        <h2>سوالات متداول</h2>
+
+        <div className={styles.question}>
+          <CircleHelp />
           <div>
-            <h3>ثبت سفارش</h3>
-
+            <h4>آیا امکان لغو سفارش وجود دارد؟</h4>
             <p>
-              کاربران موظف هستند اطلاعات تماس و آدرس خود را به صورت صحیح وارد
-              کنند. مسئولیت هرگونه اشتباه در ثبت اطلاعات بر عهده کاربر خواهد
-              بود.
+              تا قبل از ارسال سفارش، می‌توانید از طریق پشتیبانی درخواست لغو ثبت
+              کنید.
             </p>
           </div>
         </div>
 
-        <div className={styles.ruleBox}>
-          <FileText size={22} />
-
+        <div className={styles.question}>
+          <CircleHelp />
           <div>
-            <h3>مسئولیت کاربران</h3>
-
+            <h4>آیا اطلاعات من محفوظ می‌ماند؟</h4>
             <p>
-              استفاده غیرقانونی از خدمات سایت، ایجاد اختلال در سیستم و
-              سوءاستفاده از اطلاعات ممنوع بوده و پیگرد قانونی خواهد داشت.
+              بله، تمامی اطلاعات کاربران مطابق قوانین حریم خصوصی نگهداری می‌شود.
             </p>
           </div>
         </div>
 
-        <div className={styles.ruleBox}>
-          <FileText size={22} />
-
+        <div className={styles.question}>
+          <CircleHelp />
           <div>
-            <h3>تغییر قوانین</h3>
-
+            <h4>در صورت دریافت کالای معیوب چه کنم؟</h4>
             <p>
-              شاپت این حق را دارد که در هر زمان قوانین و شرایط استفاده را
-              بروزرسانی کند. نسخه جدید از زمان انتشار معتبر خواهد بود.
+              کافی است با پشتیبانی تماس بگیرید تا فرآیند تعویض یا مرجوعی انجام
+              شود.
             </p>
           </div>
         </div>
-
-        <div className={styles.ruleBox}>
-          <FileText size={22} />
-
-          <div>
-            <h3>حفظ حقوق مشتریان</h3>
-
-            <p>
-              هدف شاپت ارائه تجربه‌ای مطمئن، شفاف و حرفه‌ای برای صاحبان حیوانات
-              خانگی است و تمامی تلاش خود را برای حفظ رضایت مشتریان به کار
-              می‌گیرد.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

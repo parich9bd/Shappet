@@ -24,13 +24,13 @@ function Blog() {
       <div className={styles.heading}>
         <h2>جدیدترین مقالات</h2>
 
-        <Link href="/articles">مشاهده همه</Link>
+        <Link href="/blog">مشاهده همه</Link>
       </div>
 
       <div className={styles.blogContainer}>
         {articles.map((article) => (
           <Link
-            href={`/articles/${article.slug}`}
+            href={`/blog/${article.slug}`}
             key={article.id}
             className={styles.card}
           >

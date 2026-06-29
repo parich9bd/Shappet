@@ -1,87 +1,131 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
-
 import styles from "./faq.module.css";
+import {
+  Search,
+  ChevronDown,
+  CircleHelp,
+  PhoneCall,
+  Mail,
+} from "lucide-react";
 
-const faqData = [
+const faqs = [
   {
-    id: 1,
-    question: "چقدر طول می‌کشد سفارش به دستم برسد؟",
+    question: "چگونه سفارش خود را ثبت کنم؟",
     answer:
-      "سفارش‌های شهرهای بزرگ معمولاً بین ۱ تا ۳ روز کاری و سایر شهرها بین ۳ تا ۵ روز کاری تحویل داده می‌شوند.",
+      "پس از انتخاب محصول، آن را به سبد خرید اضافه کرده و مراحل پرداخت را تکمیل کنید.",
   },
   {
-    id: 2,
+    question: "مدت زمان ارسال سفارش چقدر است؟",
+    answer:
+      "ارسال سفارش‌ها معمولاً بین ۱ تا ۳ روز کاری انجام می‌شود.",
+  },
+  {
     question: "آیا امکان مرجوع کردن کالا وجود دارد؟",
     answer:
-      "بله، تا ۷ روز پس از دریافت کالا و در صورت رعایت شرایط مرجوعی می‌توانید درخواست بازگشت ثبت کنید.",
+      "بله، در صورت وجود ایراد یا مغایرت کالا مطابق قوانین فروشگاه امکان مرجوعی وجود دارد.",
   },
   {
-    id: 3,
-    question: "هزینه ارسال چگونه محاسبه می‌شود؟",
+    question: "چگونه سفارش خود را پیگیری کنم؟",
     answer:
-      "هزینه ارسال بر اساس شهر مقصد و وزن سفارش محاسبه می‌شود. برخی سفارش‌ها شامل ارسال رایگان هستند.",
+      "از طریق پنل کاربری یا تماس با پشتیبانی می‌توانید وضعیت سفارش را مشاهده کنید.",
   },
   {
-    id: 4,
-    question: "چگونه سفارشم را پیگیری کنم؟",
+    question: "چه روش‌هایی برای پرداخت وجود دارد؟",
     answer:
-      "از طریق پنل کاربری و بخش سفارشات می‌توانید وضعیت سفارش خود را مشاهده کنید.",
+      "پرداخت آنلاین از طریق درگاه‌های بانکی امن انجام می‌شود.",
   },
   {
-    id: 5,
-    question: "آیا محصولات ضمانت اصالت دارند؟",
+    question: "آیا محصولات دارای ضمانت اصالت هستند؟",
     answer:
-      "بله، تمامی کالاهای شاپت با تضمین اصالت و کیفیت عرضه می‌شوند.",
+      "بله، تمامی محصولات ارائه‌شده در Shopet دارای ضمانت اصالت کالا هستند.",
   },
 ];
 
 export default function FAQPage() {
-  const [activeId, setActiveId] = useState(null);
-
-  const toggleFaq = (id) => {
-    setActiveId(activeId === id ? null : id);
-  };
+  const [open, setOpen] = useState(null);
 
   return (
-    <main className={styles.container}>
-      <section className={styles.hero}>
+    <section className={styles.faq}>
+      <div className={styles.hero}>
+        <span>Shopet</span>
+
         <h1>سوالات متداول</h1>
 
         <p>
-          پاسخ رایج‌ترین سوالات کاربران شاپت را در این بخش پیدا کنید.
+          پاسخ رایج‌ترین سوالات کاربران را اینجا پیدا کنید.
         </p>
-      </section>
 
-      <section className={styles.faqSection}>
-        {faqData.map((item) => (
+        <div className={styles.searchBox}>
+          <Search size={20} />
+          <input
+            type="text"
+            placeholder="جستجو در سوالات..."
+          />
+        </div>
+      </div>
+
+      <div className={styles.categories}>
+        <button>ثبت سفارش</button>
+        <button>ارسال</button>
+        <button>پرداخت</button>
+        <button>مرجوعی</button>
+        <button>حساب کاربری</button>
+      </div>
+
+      <div className={styles.list}>
+        {faqs.map((item, index) => (
           <div
-            key={item.id}
-            className={styles.faqItem}
+            key={index}
+            className={`${styles.item} ${
+              open === index ? styles.active : ""
+            }`}
           >
             <button
               className={styles.question}
-              onClick={() => toggleFaq(item.id)}
+              onClick={() =>
+                setOpen(open === index ? null : index)
+              }
             >
-              <span>{item.question}</span>
+              <div>
+                <CircleHelp size={20} />
+                <span>{item.question}</span>
+              </div>
 
-              {activeId === item.id ? (
-                <Minus size={20} />
-              ) : (
-                <Plus size={20} />
-              )}
+              <ChevronDown />
             </button>
 
-            {activeId === item.id && (
-              <div className={styles.answer}>
-                <p>{item.answer}</p>
-              </div>
-            )}
+            <div
+              className={`${styles.answer} ${
+                open === index ? styles.show : ""
+              }`}
+            >
+              <p>{item.answer}</p>
+            </div>
           </div>
         ))}
-      </section>
-    </main>
+      </div>
+
+      <div className={styles.support}>
+        <h2>پاسخ سوال خود را پیدا نکردید؟</h2>
+
+        <p>
+          کارشناسان Shopet آماده پاسخگویی به سوالات شما هستند.
+        </p>
+
+        <div className={styles.buttons}>
+          <a href="tel:02112345678">
+            <PhoneCall size={18} />
+            تماس با پشتیبانی
+          </a>
+
+          <a href="mailto:info@shopet.ir">
+            <Mail size={18} />
+            ارسال ایمیل
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

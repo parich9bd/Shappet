@@ -1,91 +1,138 @@
-import { PawPrint, Truck, ShieldCheck, Headset, Package } from "lucide-react";
-
 import styles from "./about.module.css";
-
+import {
+  PawPrint,
+  ShieldCheck,
+  Truck,
+  HeartHandshake,
+  Star,
+  Users,
+  Award,
+} from "lucide-react";
+import Image from "next/image";
 export default function AboutPage() {
   return (
-    <main className={styles.container}>
-      <section className={styles.hero}>
-        <PawPrint size={70} />
+    <section className={styles.about}>
+      <div className={styles.hero}>
+        <span>درباره Shopet</span>
 
-        <h1>درباره شاپت</h1>
+        <h1>خانه‌ای مطمئن برای حیوانات خانگی</h1>
 
-        <p>همراه مطمئن شما در نگهداری و مراقبت از حیوانات خانگی</p>
-      </section>
+        <p>
+          ما در Shopet تلاش می‌کنیم بهترین محصولات و خدمات موردنیاز حیوانات
+          خانگی را با کیفیت بالا، قیمت مناسب و ارسال سریع در اختیار شما قرار
+          دهیم.
+        </p>
+      </div>
 
-      <section className={styles.story}>
-        <div>
+      <div className={styles.story}>
+        <div className={styles.left}>
           <h2>داستان ما</h2>
 
           <p>
-            شاپت با هدف ارائه بهترین محصولات و خدمات برای حیوانات خانگی
-            راه‌اندازی شد. ما باور داریم حیوانات عضوی از خانواده هستند و باید
-            بهترین کیفیت زندگی را تجربه کنند.
+            Shopet با هدف ایجاد یک فروشگاه تخصصی برای دوستداران حیوانات خانگی
+            شکل گرفت. ما معتقدیم حیوانات خانگی عضوی از خانواده هستند و شایسته
+            بهترین مراقبت، تغذیه و لوازم هستند.
           </p>
 
           <p>
-            از غذای حیوانات گرفته تا لوازم بهداشتی، اسباب‌بازی و تجهیزات
-            نگهداری، تلاش می‌کنیم مجموعه‌ای کامل و مطمئن در اختیار شما قرار
-            دهیم.
+            به همین دلیل مجموعه‌ای از بهترین برندهای غذایی، بهداشتی، اسباب‌بازی
+            و لوازم نگهداری را گرد هم آورده‌ایم تا خریدی مطمئن و لذت‌بخش را برای
+            شما فراهم کنیم.
           </p>
         </div>
 
-        <div className={styles.imageBox}>
-          <Package size={120} />
+        <div className={styles.right}>
+          <div className={styles.imageBox}>
+              <Image
+                src="/Logo/svgexport-7 (3) 1.svg"
+                alt="Shopet"
+                width={350}
+                height={350}
+                className={styles.image}
+              />
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.features}>
-        <h2>چرا شاپت؟</h2>
-
-        <div className={styles.grid}>
-          <article className={styles.card}>
-            <Truck size={35} />
-            <h3>ارسال سریع</h3>
-            <p>تحویل سفارشات در سریع‌ترین زمان ممکن در سراسر کشور.</p>
-          </article>
-
-          <article className={styles.card}>
-            <ShieldCheck size={35} />
-            <h3>تضمین اصالت</h3>
-            <p>تمامی محصولات دارای ضمانت اصالت و کیفیت هستند.</p>
-          </article>
-
-          <article className={styles.card}>
-            <Headset size={35} />
-            <h3>پشتیبانی حرفه‌ای</h3>
-            <p>تیم پشتیبانی آماده پاسخگویی به سوالات شماست.</p>
-          </article>
-
-          <article className={styles.card}>
-            <PawPrint size={35} />
-            <h3>تنوع محصولات</h3>
-            <p>صدها محصول متنوع برای سگ‌ها، گربه‌ها و سایر حیوانات.</p>
-          </article>
-        </div>
-      </section>
-
-      <section className={styles.stats}>
+      <div className={styles.stats}>
         <div>
-          <h3>+5000</h3>
-          <p>مشتری راضی</p>
+          <h3>+۲۰۰۰</h3>
+          <span>مشتری راضی</span>
         </div>
 
         <div>
-          <h3>+1200</h3>
-          <p>محصول فعال</p>
+          <h3>+۵۰۰</h3>
+          <span>محصول متنوع</span>
         </div>
 
         <div>
-          <h3>+50</h3>
-          <p>برند معتبر</p>
+          <h3>+۴۰</h3>
+          <span>برند معتبر</span>
         </div>
 
         <div>
-          <h3>+4</h3>
-          <p>سال تجربه</p>
+          <h3>۲۴/۷</h3>
+          <span>پشتیبانی</span>
         </div>
-      </section>
-    </main>
+      </div>
+
+      <div className={styles.features}>
+        <div className={styles.card}>
+          <ShieldCheck />
+          <h3>کیفیت تضمین‌شده</h3>
+          <p>تمام محصولات از برندهای معتبر تهیه می‌شوند.</p>
+        </div>
+
+        <div className={styles.card}>
+          <Truck />
+          <h3>ارسال سریع</h3>
+          <p>تحویل سفارش در کوتاه‌ترین زمان ممکن.</p>
+        </div>
+
+        <div className={styles.card}>
+          <HeartHandshake />
+          <h3>پشتیبانی واقعی</h3>
+          <p>همیشه پاسخگوی سوالات و نیازهای شما هستیم.</p>
+        </div>
+
+        <div className={styles.card}>
+          <PawPrint />
+          <h3>تخصص در حیوانات خانگی</h3>
+          <p>تمرکز کامل بر سلامت و رفاه حیوانات دوست‌داشتنی.</p>
+        </div>
+      </div>
+
+      <div className={styles.values}>
+        <h2>ارزش‌های ما</h2>
+
+        <div className={styles.valueGrid}>
+          <div>
+            <Award size={36} />
+            <h4>کیفیت</h4>
+          </div>
+
+          <div>
+            <Users size={36} />
+            <h4>اعتماد مشتری</h4>
+          </div>
+
+          <div>
+            <Star size={36} />
+            <h4>تجربه خرید لذت‌بخش</h4>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.cta}>
+        <h2>به خانواده Shopet بپیوندید</h2>
+
+        <p>
+          هدف ما فراهم کردن بهترین تجربه خرید برای شما و حیوانات خانگی
+          دوست‌داشتنی شماست.
+        </p>
+
+        <a href="/shop">مشاهده محصولات</a>
+      </div>
+    </section>
   );
 }

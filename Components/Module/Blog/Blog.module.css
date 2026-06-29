@@ -15,9 +15,14 @@
 }
 
 .heading a {
-  color: #3a8dff;
+  color: #f7763d;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.heading a:hover {
+  color: #e7632c;
 }
 
 .blogContainer {
@@ -59,11 +64,21 @@
 }
 
 .badges span {
-  background: #3a8dff;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 50px;
+  padding: 7px 14px;
+
+  color: #000;
+
+  border-radius: 999px;
+
   font-size: 0.82rem;
+  font-weight: 600;
+
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .content {
@@ -85,18 +100,36 @@
 }
 
 .infoItem svg {
-  color: #3a8dff;
+  color: #f7763d;
   flex-shrink: 0;
 }
 
 .readMore {
   margin-top: 20px;
+
   display: flex;
   align-items: center;
+
   gap: 8px;
-  color: #3a8dff;
-  font-weight: 600;
+
+  color: #f7763d;
+
+  font-weight: 700;
+
   transition: 0.3s;
+}
+
+.card:hover .readMore {
+  gap: 14px;
+  color: #e7632c;
+}
+
+.readMore svg {
+  transition: 0.3s;
+}
+
+.card:hover .readMore svg {
+  transform: translateX(-4px);
 }
 
 .card:hover .readMore {
@@ -127,7 +160,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 
 @media (max-width: 768px) {
   .blog {
