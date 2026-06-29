@@ -5,7 +5,9 @@ import Image from "next/image";
 import styles from "./searchBar.module.css";
 import Login from "@/Components/Auth/authForm/Login";
 import HeaderMenu from "./Menu";
+import toast from "react-hot-toast";
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { getProducts } from "@/Services/productService";
 import { useSearch } from "@/context/SearchContext";
@@ -30,15 +32,17 @@ import {
 } from "lucide-react";
 
 function SearchBar() {
-  const { query, setQuery, setLoading, setResults } = useSearch();
   const [showMenu, setShowMenu] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const { query, setQuery, setLoading, setResults } = useSearch();
+  const { cart } = useCart();
+  const { favorites } = useFavorites();
 
   const mobileMenuRef = useRef(null);
   const userMenuRef = useRef(null);
-  const { favorites } = useFavorites();
-  const { cart } = useCart();
-  const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const savedPhone = localStorage.getItem("phone");
@@ -194,10 +198,26 @@ function SearchBar() {
                     <X size={22} />
                   </button>
 
-                  <Link href="/profile" onClick={() => setShowMenu(false)}>
+                  <div
+                    onClick={() => {
+                      const token = localStorage.getItem("token");
+
+                      setShowMenu(false);
+
+                      if (!token) {
+                        toast.error(
+                          "برای ورود به پروفایل ابتدا وارد حساب شوید",
+                        );
+                        return;
+                      }
+
+                      router.push("/profile");
+                    }}
+                    className={styles.loginBtn}
+                  >
                     <User size={18} />
                     پروفایل
-                  </Link>
+                  </div>
 
                   {user ? (
                     <div className={styles.loginBtn}>
@@ -268,10 +288,24 @@ function SearchBar() {
 
               <hr />
 
-              <Link href="/profile" onClick={() => setShowMenu(false)}>
+              <div
+                onClick={() => {
+                  const token = localStorage.getItem("token");
+
+                  setShowMenu(false);
+
+                  if (!token) {
+                    toast.error("برای ورود به پروفایل ابتدا وارد حساب شوید");
+                    return;
+                  }
+
+                  window.location.href = "/profile";
+                }}
+                className={styles.loginBtn}
+              >
                 <User size={18} />
                 پروفایل
-              </Link>
+              </div>
 
               {user ? (
                 <div className={styles.loginBtn}>

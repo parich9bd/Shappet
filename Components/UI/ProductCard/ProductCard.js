@@ -6,6 +6,7 @@ import { Heart, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useFavorites } from "@/context/FavoritesContext";
 import styles from "./ProductCard.module.css";
+import toast from "react-hot-toast";
 
 function ProductCard({
   product,
@@ -21,8 +22,12 @@ function ProductCard({
         onClick={() => {
           if (isFavorite(product.id)) {
             removeFavorite(product.id);
+            toast("از علاقه‌مندی‌ها حذف شد", {
+              icon: "💔",
+            });
           } else {
             addFavorite(product);
+            toast.success("به علاقه‌مندی‌ها اضافه شد");
           }
         }}
       >

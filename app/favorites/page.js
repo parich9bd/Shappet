@@ -11,10 +11,11 @@ import {
   BadgePercent,
 } from "lucide-react";
 
-import { useFavorites } from "@/context/FavoritesContext";
-import { useCart } from "@/context/CartContext";
 import styles from "./FavoriteCard.module.css";
 import toast from "react-hot-toast";
+
+import { useFavorites } from "@/context/FavoritesContext";
+import { useCart } from "@/context/CartContext";
 
 export default function Page() {
   const { favorites, removeFavorite } = useFavorites();
@@ -40,7 +41,13 @@ export default function Page() {
           <div key={product.id} className={styles.card}>
             <button
               className={styles.removeBtn}
-              onClick={() => removeFavorite(product.id)}
+              onClick={() => {
+                removeFavorite(product.id);
+
+                toast("محصول از سبد خرید حذف شد", {
+                  icon: "💔",
+                });
+              }}
             >
               <Heart fill="#ff4d6d" color="#ff4d6d" size={22} />
             </button>

@@ -1,121 +1,107 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-
+import Link from "next/link";
 import {
   User,
-  Mail,
   Phone,
+  Mail,
   MapPin,
   ShoppingBag,
   Heart,
+  Settings,
   LogOut,
-  Pencil,
+  CircleUserRound,
 } from "lucide-react";
 
 import styles from "./profile.module.css";
 
 export default function ProfilePage() {
-  const [phone, setPhone] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const savedPhone = localStorage.getItem("phone");
-    setPhone(savedPhone || "ثبت نشده");
+    const phone = localStorage.getItem("phone");
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      window.location.href = "/";
+      return;
+    }
+
+    setUser({
+      name: "پریچهر عابدزاده",
+      phone: phone || "ثبت نشده",
+      email: "Parichehrabedzadeh@gmail.com",
+      city: "اصفهان",
+    });
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("phone");
+    window.location.href = "/";
+  };
+
+  if (!user) return null;
+
   return (
-    <main className={styles.container}>
-      <section className={styles.profileCard}>
-        <div className={styles.avatarBox}>
-          <Image
-            src="/Images/avatar.png"
-            width={120}
-            height={120}
-            alt="avatar"
-            className={styles.avatar}
-          />
-
-          <button className={styles.uploadBtn}>
-            تغییر تصویر
-          </button>
-        </div>
-
-        <div className={styles.userInfo}>
-          <h1>پریچهر</h1>
-
-          <div className={styles.infoItem}>
-            <Phone size={18} />
-            <span>{phone}</span>
+    <main className={styles.page}>
+      {/* HEADER */}
+      <section className={styles.header}>
+        <div className={styles.userBox}>
+          <div className={styles.avatar}>
+            <CircleUserRound size={54} className={styles.avatarIcon} />
           </div>
 
-          <div className={styles.infoItem}>
-            <Mail size={18} />
-            <span>user@gmail.com</span>
+          <div className={styles.userMeta}>
+            <h1>{user.name}</h1>
+            <p>{user.phone}</p>
           </div>
-
-          <div className={styles.infoItem}>
-            <MapPin size={18} />
-            <span>شیراز، ایران</span>
-          </div>
-
-          <button className={styles.editBtn}>
-            <Pencil size={16} />
-            ویرایش پروفایل
-          </button>
         </div>
+
+        <button className={styles.logoutBtn} onClick={logout}>
+          <LogOut size={18} />
+          خروج
+        </button>
       </section>
 
-      <section className={styles.stats}>
-        <div className={styles.statCard}>
-          <ShoppingBag size={26} />
-          <h3>12</h3>
-          <p>سفارش</p>
-        </div>
+      {/* QUICK ACTIONS */}
+      <section className={styles.actions}>
+        <Link href="/orders" className={styles.card}>
+          <ShoppingBag size={22} />
+          <span>سفارش‌ها</span>
+        </Link>
 
-        <div className={styles.statCard}>
-          <Heart size={26} />
-          <h3>8</h3>
-          <p>علاقه‌مندی</p>
-        </div>
+        <Link href="/favorites" className={styles.card}>
+          <Heart size={22} />
+          <span>علاقه‌مندی</span>
+        </Link>
 
-        <div className={styles.statCard}>
-          <User size={26} />
-          <h3>3 سال</h3>
-          <p>عضویت</p>
-        </div>
+        <Link href="/settings" className={styles.card}>
+          <Settings size={22} />
+          <span>تنظیمات</span>
+        </Link>
       </section>
 
-      <section className={styles.orders}>
-        <h2>سفارشات اخیر</h2>
+      {/* INFO */}
+      <section className={styles.info}>
+        <h2>اطلاعات حساب</h2>
 
-        <div className={styles.order}>
-          <span>غذای خشک سگ رویال کنین</span>
-          <span>تحویل شده</span>
+        <div className={styles.row}>
+          <Phone size={18} />
+          <span>{user.phone}</span>
         </div>
 
-        <div className={styles.order}>
-          <span>غذای گربه جوسرا</span>
-          <span>در حال ارسال</span>
+        <div className={styles.row}>
+          <Mail size={18} />
+          <span>{user.email}</span>
         </div>
 
-        <div className={styles.order}>
-          <span>اسباب بازی حیوانات</span>
-          <span>تحویل شده</span>
+        <div className={styles.row}>
+          <MapPin size={18} />
+          <span>{user.city}</span>
         </div>
       </section>
-
-      <button
-        className={styles.logout}
-        onClick={() => {
-          localStorage.removeItem("token");
-          localStorage.removeItem("phone");
-          window.location.reload();
-        }}
-      >
-        <LogOut size={18} />
-        خروج از حساب
-      </button>
     </main>
   );
 }

@@ -1,255 +1,152 @@
-.container {
-  max-width: 1400px;
-
-  margin: 50px auto;
-
+.page {
+  max-width: 1100px;
+  margin: 40px auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-/* =======================
-   PROFILE CARD
-======================= */
-
-.profileCard {
+/* HEADER */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  gap: 40px;
+  padding: 24px;
 
-  padding: 40px;
-
+  background: #fff;
   border: 1px solid #eee;
-  border-radius: 24px;
-
-  background: white;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
 }
 
-.avatarBox {
+.userBox {
   display: flex;
-  flex-direction: column;
   align-items: center;
-
-  gap: 15px;
+  gap: 14px;
 }
-
 .avatar {
-  border-radius: 50%;
-  object-fit: cover;
+  width: 70px;
+  height: 70px;
 
-  border: 4px solid #f7763d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f8f8f8;
+  border: 1px solid #eee;
 }
 
-.uploadBtn {
+.avatarIcon {
+  color: #444; /* خنثی و مینیمال */
+}
+
+.userMeta h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #222;
+}
+
+.userMeta p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+/* LOGOUT */
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+
   border: none;
-  background: #f7763d;
-
-  color: white;
-
-  padding: 10px 20px;
-
   border-radius: 10px;
 
-  cursor: pointer;
+  background: #ff4d4f;
+  color: #fff;
+  font-family: "Vazirmatn", sans-serif;
 
-  transition: 0.3s;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.uploadBtn:hover {
+.logoutBtn:hover {
   opacity: 0.9;
 }
 
-.userInfo {
-  flex: 1;
+/* ACTIONS */
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
 
+.card {
   display: flex;
   flex-direction: column;
-
-  gap: 20px;
-}
-
-.userInfo h1 {
-  color: #222;
-  font-size: 32px;
-}
-
-.infoItem {
-  display: flex;
   align-items: center;
+  justify-content: center;
 
   gap: 10px;
 
-  color: #666;
+  padding: 24px;
+
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+
+  text-decoration: none;
+  color: #333;
+
+  transition: 0.25s;
 }
 
-.infoItem svg {
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #f7763d;
   color: #f7763d;
 }
 
-.editBtn {
-  width: fit-content;
+/* INFO */
+.info {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 18px;
 
+  padding: 24px;
+}
+
+.info h2 {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
-  border: none;
-
-  background: #f7763d;
-  color: white;
-
-  padding: 12px 22px;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.editBtn:hover {
-  transform: translateY(-2px);
-}
-
-/* =======================
-   STATS
-======================= */
-
-.stats {
-  margin-top: 40px;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 20px;
-}
-
-.statCard {
-  background: white;
-
-  border: 1px solid #eee;
-  border-radius: 20px;
-
-  padding: 30px;
-
-  text-align: center;
-
-  transition: 0.3s;
-}
-
-.statCard:hover {
-  transform: translateY(-5px);
-}
-
-.statCard svg {
-  color: #f7763d;
-
-  margin-bottom: 10px;
-}
-
-.statCard h3 {
-  font-size: 28px;
-
-  margin-bottom: 10px;
-
-  color: #222;
-}
-
-.statCard p {
-  color: #777;
-}
-
-/* =======================
-   ORDERS
-======================= */
-
-.orders {
-  margin-top: 40px;
-
-  background: white;
-
-  border: 1px solid #eee;
-  border-radius: 24px;
-
-  padding: 30px;
-}
-
-.orders h2 {
-  margin-bottom: 25px;
-
-  color: #222;
-}
-
-.order {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 18px 0;
-
+  padding: 12px 0;
   border-bottom: 1px solid #f2f2f2;
 }
 
-.order:last-child {
+.row:last-child {
   border-bottom: none;
 }
 
-.order span:last-child {
-  color: #f7763d;
-  font-weight: 600;
-}
-
-/* =======================
-   LOGOUT
-======================= */
-
-.logout {
-  margin-top: 30px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  border: none;
-
-  background: #ff4d4f;
-  color: white;
-
-  padding: 14px 24px;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.logout:hover {
-  opacity: 0.9;
-}
-
-/* =======================
-   RESPONSIVE
-======================= */
-
-@media (max-width: 900px) {
-  .profileCard {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .userInfo {
-    align-items: center;
-  }
-
-  .stats {
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .actions {
     grid-template-columns: 1fr;
   }
 
-  .order {
+  .header {
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
+    text-align: center;
   }
 }

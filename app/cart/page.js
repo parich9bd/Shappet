@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
-
-import { useCart } from "@/context/CartContext";
-
+import toast from "react-hot-toast";
 import styles from "./Cart.module.css";
+
+import { Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 export default function Page() {
   const { cart, removeFromCart } = useCart();
@@ -19,7 +19,7 @@ export default function Page() {
   if (cart.length === 0) {
     return (
       <section className={styles.empty}>
-          <ShoppingCart size={70} />
+        <ShoppingCart size={70} />
         <h2>سبد خرید شما خالی است.</h2>
 
         <Link href="/products" className={styles.shopBtn}>
@@ -86,7 +86,13 @@ export default function Page() {
 
                   <button
                     className={styles.removeBtn}
-                    onClick={() => removeFromCart(product.id)}
+                    onClick={() => {
+                      removeFromCart(product.id);
+
+                      toast("محصول از سبد خرید حذف شد", {
+                        icon: "❌",
+                      });
+                    }}
                   >
                     <Trash2 size={18} />
                   </button>
