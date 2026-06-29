@@ -83,6 +83,7 @@
 
 .btn {
   width: fit-content;
+  font-family: "Vazirmatn", sans-serif;
 
   display: flex;
   align-items: center;

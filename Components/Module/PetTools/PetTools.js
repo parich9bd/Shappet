@@ -1,12 +1,18 @@
 "use client";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./PetTools.module.css";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
+import { useCart } from "@/context/CartContext";
+import toast from "react-hot-toast";
+
 function PetTools() {
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const handleResize = () => {
@@ -14,11 +20,11 @@ function PetTools() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -41,6 +47,12 @@ function PetTools() {
     fetchProducts();
   }, []);
 
+  // 👇 هندل سبد خرید + toast
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    toast.success(`${product.productName} به سبد خرید اضافه شد`);
+  };
+
   return (
     <section className={styles.petTools}>
       {/* تصویر سمت چپ */}
@@ -57,7 +69,7 @@ function PetTools() {
         <div className={styles.imageOverlay}>
           <h2>لوازم نگهداری حیوانات</h2>
 
-          <Link href="/products" className={styles.showAllBtn}>
+          <Link href="/pet-tools" className={styles.showAllBtn}>
             مشاهده همه
           </Link>
         </div>
@@ -67,7 +79,11 @@ function PetTools() {
       <div className={styles.petToolsContent}>
         <div className={styles.petToolsProducts}>
           {(isMobile ? products.slice(0, 4) : products).map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              onAddToCart={() => handleAddToCart(product)}
+            />
           ))}
         </div>
       </div>

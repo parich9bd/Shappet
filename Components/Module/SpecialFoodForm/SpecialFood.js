@@ -14,7 +14,7 @@ function SpecialFood() {
           <p>غذا ماهی</p>
         </div>
 
-        <Link href="/" className={styles.arrow}>
+        <Link href="/fishfood" className={styles.arrow}>
           <ArrowLeft size={18} />
         </Link>
       </div>
@@ -23,10 +23,10 @@ function SpecialFood() {
         <div className={styles.left}>
           <Image src="/FoodForm/cat.svg" width={60} height={60} alt="cat" />
 
-          <p>غذا و لوازم گربه</p>
+          <p>غذا گربه</p>
         </div>
 
-        <Link href="/" className={styles.arrow}>
+        <Link href="/catfood" className={styles.arrow}>
           <ArrowLeft size={18} />
         </Link>
       </div>
@@ -35,10 +35,10 @@ function SpecialFood() {
         <div className={styles.left}>
           <Image src="/FoodForm/dog.svg" width={60} height={60} alt="dog" />
 
-          <p>غذا و لوازم سگ</p>
+          <p>غذا سگ</p>
         </div>
 
-        <Link href="/" className={styles.arrow}>
+        <Link href="/dogfood" className={styles.arrow}>
           <ArrowLeft size={18} />
         </Link>
       </div>

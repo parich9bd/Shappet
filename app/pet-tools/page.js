@@ -12,19 +12,15 @@ async function getProducts() {
 export default async function Page() {
   const products = await getProducts();
 
-  const specialProducts = products.filter((product) => product.discount > 0);
+  const tools = products.filter((item) => item.category === "accessories");
 
   return (
     <section className={styles.container}>
-      <div className={styles.header}>
-        <h1>محصولات ویژه</h1>
-
-        <p>تمامی محصولاتی که دارای تخفیف ویژه هستند.</p>
-      </div>
+      <h1 className={styles.title}>لوازم نگهداری حیوانات</h1>
 
       <div className={styles.grid}>
-        {specialProducts.map((product) => (
-          <ProductCard key={product.id} product={product} showDiscount={true} />
+        {tools.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </section>

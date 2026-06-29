@@ -1,0 +1,42 @@
+.container {
+  width: min(1300px, calc(100% - 40px));
+  margin: 70px auto;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #666;
+  line-height: 2;
+  max-width: 700px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 30px);
+    margin: 40px auto;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+}

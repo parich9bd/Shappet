@@ -6,7 +6,7 @@
 
 A modern, responsive and user-friendly pet shop website built with Next.js, featuring product pages, blog, authentication UI, FAQ, contact page, order tracking and more.
 
-<img src="./public/preview/home.png" width="900"/>
+<img src="./public/Icon/Group.svg" width="900"/>
 
 </div>
 
