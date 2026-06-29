@@ -1,13 +1,16 @@
 .petTools {
   width: 100%;
   max-width: 1400px;
-  margin: 10px auto;
-  padding: 0 30px;
+
+  margin: 40px auto; /* 👈 فاصله واقعی از بالا/پایین */
+  padding: 0 40px; /* 👈 فاصله از چپ و راست */
+
   box-sizing: border-box;
 
   display: flex;
   align-items: stretch;
   justify-content: center;
+
   gap: 70px;
 }
 
