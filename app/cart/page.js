@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Trash2, Plus, Minus } from "lucide-react";
+import { Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
 
 import { useCart } from "@/context/CartContext";
 
@@ -13,15 +13,14 @@ export default function Page() {
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
 
   if (cart.length === 0) {
     return (
       <section className={styles.empty}>
-        <h1>🛒 سبد خرید</h1>
-
-        <p>سبد خرید شما خالی است.</p>
+          <ShoppingCart size={70} />
+        <h2>سبد خرید شما خالی است.</h2>
 
         <Link href="/products" className={styles.shopBtn}>
           مشاهده محصولات
@@ -69,9 +68,7 @@ export default function Page() {
                     <h2>{product.price.toLocaleString("fa-IR")} تومان</h2>
 
                     {product.oldPrice && (
-                      <del>
-                        {product.oldPrice.toLocaleString("fa-IR")}
-                      </del>
+                      <del>{product.oldPrice.toLocaleString("fa-IR")}</del>
                     )}
                   </div>
 
@@ -118,9 +115,7 @@ export default function Page() {
             <strong>{totalPrice.toLocaleString("fa-IR")} تومان</strong>
           </div>
 
-          <button className={styles.checkoutBtn}>
-            ادامه فرایند خرید
-          </button>
+          <button className={styles.checkoutBtn}>ادامه فرایند خرید</button>
         </aside>
       </div>
     </section>

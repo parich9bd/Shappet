@@ -382,34 +382,51 @@
   top: 55px;
   left: 0;
 
-  width: 170px;
+  width: 220px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   background: #fff;
-
-  border-radius: 14px;
-
   border: 1px solid #ececec;
+  border-radius: 16px;
 
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 
-  overflow: hidden;
-
-  animation: popup 0.2s ease;
+  animation: popup 0.25s ease;
 }
 .userPopup a {
+  width: 100%;
+  box-sizing: border-box;
+
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+
   gap: 12px;
+  padding: 0 16px;
 
-  padding: 14px 16px;
+  height: 48px;
 
-  color: #333;
+  border-radius: 12px;
+
   text-decoration: none;
 
-  font-size: 14px;
-  font-weight: 500;
+  background: #f8fafc;
 
-  transition: 0.25s;
+  color: #333;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.userPopup a:hover {
+  background: #eef6ff;
+  color: #2587ff;
 }
 
 .userPopup a:hover {
@@ -433,27 +450,73 @@
 
   color: #f7763d;
 }
+
 .userIcon {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  border-radius: 50%;
+  border-radius: 14px;
 
-  transition: 0.3s;
+  background: linear-gradient(135deg, #fff, #fff7f3);
+
+  border: 1px solid #ececec;
+
+  color: #555;
 
   cursor: pointer;
+
+  transition: .35s;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
 
 .userIcon:hover {
-  background: #f8f8f8;
+  background: #f7763d;
 
-  color: #f7763d;
+  color: white;
 
-  transform: scale(1.08);
+  border-color: #f7763d;
+
+  transform: translateY(-3px) scale(1.08);
+
+  box-shadow: 0 14px 28px rgba(247,118,61,.35);
+}.userIcon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #fff, #fff7f3);
+
+  border: 1px solid #ececec;
+
+  color: #555;
+
+  cursor: pointer;
+
+  transition: .35s;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+.userIcon:hover {
+  background: #f7753d9f;
+
+  color: white;
+
+  border-color: #f7763d;
+
+  transform: translateY(-3px) scale(1.08);
+
+  box-shadow: 0 14px 28px rgba(247,118,61,.35);
 }
 /* ===========================
    Close Button
@@ -587,7 +650,6 @@
   gap: 0.5rem;
 }
 
-
 .favoriteLink {
   position: relative;
 
@@ -599,18 +661,15 @@
 .badge {
   position: absolute;
 
-  top: -8px;
-  right: -8px;
+  top: 3px;
+  right: 1px;
 
   min-width: 18px;
   height: 18px;
 
-  padding: 0 5px;
-
   border-radius: 50%;
-
-  background: #ff4d6d;
-  color: white;
+  background-color: #f7763d;
+  color: #fff;
 
   font-size: 11px;
   font-weight: 700;
@@ -618,13 +677,74 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
 }
 
-.cartLink{
-    position:relative;
+.cartLink {
+  position: relative;
 }
 
 .favoriteLink,
-.cartLink{
-    position:relative;
+.cartLink {
+  position: relative;
+}
+
+
+.userTooltip {
+  position: absolute;
+
+  top: 55px;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-8px);
+
+  white-space: nowrap;
+
+  padding: 8px 14px;
+
+  border-radius: 10px;
+
+  background: #fff;
+  color: #333;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  border: 1px solid #eee;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .25s;
+
+  pointer-events: none;
+
+  z-index: 1000;
+}
+
+.userTooltip::before {
+  content: "";
+
+  position: absolute;
+
+  top: -6px;
+  left: 50%;
+
+  transform: translateX(-50%) rotate(45deg);
+
+  width: 12px;
+  height: 12px;
+
+  background: #fff;
+
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+}
+
+.userMenu:hover .userTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }

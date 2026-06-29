@@ -12,24 +12,28 @@ import {
 } from "lucide-react";
 
 import { useFavorites } from "@/context/FavoritesContext";
-
+import { useCart } from "@/context/CartContext";
 import styles from "./FavoriteCard.module.css";
+import toast from "react-hot-toast";
 
 export default function Page() {
   const { favorites, removeFavorite } = useFavorites();
-
+  const { addToCart } = useCart();
   if (favorites.length === 0) {
     return (
       <section className={styles.empty}>
         <Heart size={70} />
         <h2>هنوز محصولی به علاقه‌مندی‌ها اضافه نکرده‌اید.</h2>
+        <Link href="/" className={styles.homeLink}>
+          برای مشاهده و جستجوی محصولات به صفحه اصلی برگردید
+        </Link>
       </section>
     );
   }
 
   return (
     <section className={styles.container}>
-      <h1>علاقه‌مندی‌های من ❤️</h1>
+      <h1> لیست محصول های منتخب </h1>
 
       <div className={styles.grid}>
         {favorites.map((product) => (
@@ -60,16 +64,12 @@ export default function Page() {
                   <span className={styles.best}>پرفروش</span>
                 )}
 
-                {product.isNew && (
-                  <span className={styles.new}>جدید</span>
-                )}
+                {product.isNew && <span className={styles.new}>جدید</span>}
               </div>
 
               <h2>{product.productName}</h2>
 
-              <p className={styles.description}>
-                {product.description}
-              </p>
+              <p className={styles.description}>{product.description}</p>
 
               <div className={styles.meta}>
                 <span>
@@ -95,29 +95,27 @@ export default function Page() {
               </div>
 
               <div className={styles.priceBox}>
-                <del>
-                  {product.oldPrice.toLocaleString("fa-IR")} تومان
-                </del>
+                <del>{product.oldPrice.toLocaleString("fa-IR")} تومان</del>
 
                 <span className={styles.discount}>
                   <BadgePercent size={16} />
                   {product.discount}٪
                 </span>
 
-                <h3>
-                  {product.price.toLocaleString("fa-IR")} تومان
-                </h3>
+                <h3>{product.price.toLocaleString("fa-IR")} تومان</h3>
               </div>
 
               <div className={styles.actions}>
-                <Link
-                  href={`/products/${product.id}`}
-                  className={styles.detailsBtn}
-                >
-                  مشاهده محصول
-                </Link>
+                <button
+                  className={styles.cartBtn}
+                  onClick={() => {
+                    addToCart(product);
 
-                <button className={styles.cartBtn}>
+                    toast.success(`${product.productName} اضافه شد`, {
+                      duration: 2000,
+                    });
+                  }}
+                >
                   <ShoppingCart size={18} />
                   افزودن به سبد
                 </button>

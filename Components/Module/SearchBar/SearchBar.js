@@ -21,6 +21,7 @@ import {
   PhoneCall,
   CircleHelp,
   User,
+  LogIn,
 } from "lucide-react";
 import HeaderMenu from "./Menu";
 
@@ -168,6 +169,7 @@ function SearchBar() {
                 className={styles.userIcon}
                 onClick={() => setShowMenu(!showMenu)}
               />
+              <span className={styles.userTooltip}>حساب کاربری</span>
 
               {showMenu && (
                 <div className={styles.userPopup}>
@@ -179,6 +181,7 @@ function SearchBar() {
                   </button>
 
                   <Link href="/profile" onClick={() => setShowMenu(false)}>
+                    <User size={18} />
                     پروفایل
                   </Link>
 
@@ -190,6 +193,7 @@ function SearchBar() {
                       setShowLoginModal(true);
                     }}
                   >
+                    <LogIn size={18} />
                     ورود
                   </button>
                 </div>

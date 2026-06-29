@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
-import { Phone, Lock , X  } from "lucide-react";
-
+import { Phone, Lock, X } from "lucide-react";
+import {toEnglishDigits} from "@/utils/convertDigits"
 import styles from "./Login.module.css";
 
 import { loginSchema } from "@/schemas/loginSchema";
@@ -52,7 +52,7 @@ function Login({ onClose }) {
       localStorage.removeItem("otp");
 
       toast.success("ورود موفق");
-
+      onClose();
       router.push("/");
     } else {
       toast.error("کد وارد شده اشتباه است");
@@ -81,12 +81,13 @@ function Login({ onClose }) {
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputGroup}>
             <Phone size={18} />
-
             <input
               type="text"
               placeholder="شماره موبایل"
               disabled={otpSent}
-              {...register("phone")}
+              {...register("phone", {
+                setValueAs: (value) => toEnglishDigits(value),
+              })}
             />
           </div>
 
@@ -102,7 +103,9 @@ function Login({ onClose }) {
                 <input
                   type="text"
                   placeholder="کد تایید"
-                  {...register("code")}
+                  {...register("code", {
+                    setValueAs: (value) => toEnglishDigits(value),
+                  })}
                 />
               </div>
 

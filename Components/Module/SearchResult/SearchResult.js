@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { useSearch } from "@/context/SearchContext";
 import SearchLoader from "@/Components/UI/SearchLoader/SearchLoader";
-
+import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import styles from "./SearchResult.module.css";
 
 function SearchResult() {
@@ -25,24 +25,7 @@ function SearchResult() {
 
       <div className={styles.grid}>
         {results.map((product) => (
-          <Link
-            key={product.id}
-            href={`/products/${product.id}`}
-            className={styles.card}
-          >
-            <Image
-              src={product.image}
-              alt={product.productName}
-              width={220}
-              height={220}
-            />
-
-            <h3>{product.productName}</h3>
-
-            <span>
-              {product.price.toLocaleString("fa-IR")} تومان
-            </span>
-          </Link>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
 

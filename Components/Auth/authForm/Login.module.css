@@ -6,114 +6,213 @@
   justify-content: center;
   align-items: center;
 
+  padding: 20px;
+
   background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
   z-index: 9999;
 }
 
 .card {
-  width: 380px;
-  padding: 30px;
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 20px 60px rgba(255, 120, 0, 0.15);
-  border: 1px solid rgba(255, 120, 0, 0.1);
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.header h2 {
-  margin: 10px 0 5px;
-  color: #ff6a00;
-}
-
-.header p {
-  font-size: 13px;
-  color: #777;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.inputGroup {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #fff7f0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  transition: 0.3s;
-}
-
-.inputGroup:focus-within {
-  border: 1px solid #ff6a00;
-  background: #fff;
-}
-
-.inputGroup span {
-  font-size: 18px;
-}
-
-.inputGroup input {
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 100%;
-  font-size: 14px;
-}
-
-.button {
-  margin-top: 10px;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #ff7a00, #ff5200);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  font-family: "Vazirmatn", sans-serif;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 90, 0, 0.3);
-}
-
-.card {
   position: relative;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 36px;
+
+  background: #fff;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(247, 118, 61, 0.12);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.08),
+    0 24px 60px rgba(247, 118, 61, 0.12);
+
+  animation: fadeUp 0.35s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .close {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 18px;
+  left: 18px;
+
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 36px;
-  height: 36px;
-
   border: none;
-  background: transparent;
   border-radius: 50%;
 
+  background: transparent;
+
   cursor: pointer;
-  transition: 0.2s;
+
+  transition: 0.3s;
 }
 
 .close:hover {
-  background: #f5f5f5;
-  color: #ff6a00;
+  background: #fff5ef;
+  color: #f7763d;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.header img {
+  margin-bottom: 14px;
+}
+
+.header h2 {
+  margin-bottom: 8px;
+
+  font-size: 28px;
+  font-weight: 800;
+
+  color: #f7763d;
+}
+
+.header p {
+  color: #777;
+  font-size: 14px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  border-radius: 14px;
+
+  background: #fff7f0;
+
+  border: 1px solid transparent;
+
+  transition: 0.3s;
+}
+
+.inputGroup svg {
+  color: #f7763d;
+  flex-shrink: 0;
+}
+
+.inputGroup:focus-within {
+  background: #fff;
+
+  border-color: #f7763d;
+
+  box-shadow: 0 0 0 4px rgba(247, 118, 61, 0.12);
+}
+
+.inputGroup input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.inputGroup input::placeholder {
+  color: #999;
+}
+
+.inputGroup input:disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: -8px;
+
+  color: #ef4444;
+
+  font-size: 13px;
+
+  padding-right: 4px;
+}
+
+.button {
+  margin-top: 8px;
+
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #ff8c42, #f7763d);
+
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  box-shadow: 0 14px 28px rgba(247, 118, 61, 0.35);
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 28px 22px;
+  }
+
+  .header h2 {
+    font-size: 24px;
+  }
 }

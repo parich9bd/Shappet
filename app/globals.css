@@ -11,9 +11,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-
   font-family: "Vazirmatn", sans-serif;
 }
+
+/* * {
+  outline: 1px solid red;
+} */
 
 body {
   min-height: 100vh;

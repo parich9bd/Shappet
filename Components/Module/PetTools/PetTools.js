@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./PetTools.module.css";
-
+import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 function PetTools() {
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -67,20 +67,7 @@ function PetTools() {
       <div className={styles.petToolsContent}>
         <div className={styles.petToolsProducts}>
           {(isMobile ? products.slice(0, 4) : products).map((product) => (
-            <div className={styles.toolCard} key={product.id}>
-              <Image
-                src={product.image}
-                width={130}
-                height={130}
-                alt={product.productName}
-              />
-
-              <h4>{product.productName}</h4>
-
-              <span>{product.price.toLocaleString("fa-IR")} تومان</span>
-
-              <button>افزودن به سبد خرید</button>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
