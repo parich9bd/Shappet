@@ -5,10 +5,27 @@ import { createContext, useContext, useState } from "react";
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
+  const increaseQuantity = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
+  };
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-     console.log("ADD", product);
+    console.log("ADD", product);
     setCart((prev) => {
       const exist = prev.find((item) => item.id === product.id);
 
@@ -19,7 +36,7 @@ export function CartProvider({ children }) {
                 ...item,
                 quantity: item.quantity + 1,
               }
-            : item
+            : item,
         );
       }
 
@@ -48,6 +65,8 @@ export function CartProvider({ children }) {
         addToCart,
         removeFromCart,
         clearCart,
+        increaseQuantity,
+        decreaseQuantity,
       }}
     >
       {children}

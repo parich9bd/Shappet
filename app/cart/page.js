@@ -9,8 +9,8 @@ import { Trash2, Plus, Minus, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export default function Page() {
-  const { cart, removeFromCart } = useCart();
-
+  const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
+    useCart();
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
@@ -73,13 +73,13 @@ export default function Page() {
                   </div>
 
                   <div className={styles.quantity}>
-                    <button>
+                    <button onClick={() => increaseQuantity(product.id)}>
                       <Plus size={18} />
                     </button>
 
                     <span>{product.quantity}</span>
 
-                    <button>
+                    <button onClick={() => decreaseQuantity(product.id)}>
                       <Minus size={18} />
                     </button>
                   </div>
