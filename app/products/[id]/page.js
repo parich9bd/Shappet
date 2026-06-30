@@ -32,7 +32,7 @@ export default function ProductDetailsPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch("http://localhost:4000/products");
+        const res = await fetch("/api/products");
 
         const data = await res.json();
 

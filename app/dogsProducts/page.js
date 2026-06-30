@@ -2,7 +2,7 @@ import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import styles from "./dogsProducts.module.css";
 
 export default async function DogsProducts() {
-  const res = await fetch("http://localhost:4000/products", {
+  const res = await fetch("/api/products", {
     cache: "no-store",
   });
 

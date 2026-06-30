@@ -3,7 +3,7 @@ import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 
 
 export default async function CatFoodPage() {
-  const res = await fetch("http://localhost:4000/products", {
+  const res = await fetch("/api/products", {
     cache: "no-store",
   });
 
