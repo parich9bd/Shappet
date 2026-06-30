@@ -13,7 +13,7 @@ function Products() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch("/api/products");
+      const res = await fetch("http://localhost:4000/products");
       const data = await res.json();
 
       // فقط جدیدترین محصولات

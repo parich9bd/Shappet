@@ -5,7 +5,7 @@ import { User, CalendarDays, Clock3, Tag } from "lucide-react";
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
 
-  const res = await fetch("/api/articles", {
+  const res = await fetch("http://localhost:4000/articles", {
     cache: "no-store",
   });
 

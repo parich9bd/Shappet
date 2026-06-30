@@ -11,7 +11,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     async function fetchArticles() {
-      const res = await fetch("/api/articles");
+      const res = await fetch("http://localhost:4000/articles");
       const data = await res.json();
 
       setArticles(data);

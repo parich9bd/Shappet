@@ -2,7 +2,7 @@ import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import styles from "./page.module.css";
 
 async function getProducts() {
-  const res = await fetch("/api/products", {
+  const res = await fetch("http://localhost:4000/products", {
     cache: "no-store",
   });
 
