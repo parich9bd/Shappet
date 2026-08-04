@@ -1,13 +1,6 @@
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
+import { getProducts } from "@/Services/productService";
 import styles from "./page.module.css";
-
-async function getProducts() {
-  const res = await fetch("http://localhost:4000/products", {
-    cache: "no-store",
-  });
-
-  return res.json();
-}
 
 export default async function Page() {
   const products = await getProducts();
@@ -24,7 +17,11 @@ export default async function Page() {
 
       <div className={styles.grid}>
         {specialProducts.map((product) => (
-          <ProductCard key={product.id} product={product} showDiscount={true} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            showDiscount={true}
+          />
         ))}
       </div>
     </section>

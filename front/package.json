@@ -6,13 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "server-json": "json-server --watch db.json --port 4000"
+    "lint": "eslint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
     "@tanstack/react-query": "^5.101.1",
-    "json-server": "^1.0.0-beta.15",
     "ldrs": "^1.1.9",
     "lucide-react": "^1.21.0",
     "next": "16.2.9",

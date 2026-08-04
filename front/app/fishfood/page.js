@@ -1,13 +1,9 @@
 import styles from "./fishfood.module.css";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
-
+import { getProducts } from "@/Services/productService";
 
 export default async function FishFoodPage() {
-  const res = await fetch("http://localhost:4000/products", {
-    cache: "no-store",
-  });
-
-  const products = await res.json();
+  const products = await getProducts();
 
   const fishFoods = products.filter(
     (product) => product.category === "fish-food"
