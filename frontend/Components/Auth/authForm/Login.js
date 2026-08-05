@@ -7,70 +7,75 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 import { Phone, Lock, X } from "lucide-react";
+
 import { toEnglishDigits } from "@/utils/convertDigits";
 import styles from "./Login.module.css";
 
 import { loginSchema } from "@/schemas/loginSchema";
-import { useSendOtp } from "@/hooks/useLogin";
+import { useSendOtp, useVerifyOtp } from "@/hooks/useLogin";
 
 function Login({ onClose, onLogin }) {
   const router = useRouter();
   const [otpSent, setOtpSent] = useState(false);
-  const sendOtp = useSendOtp(setOtpSent);
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(loginSchema),
-
     defaultValues: {
       phone: "",
       code: "",
     },
   });
 
+  const phone = watch("phone");
+
+  const sendOtp = useSendOtp(setOtpSent);
+
+  const verifyOtp = useVerifyOtp({
+    phone,
+
+    onSuccess: (data) => {
+      onLogin?.(data.user);
+      onClose();
+      router.push("/");
+    },
+  });
+
   const onSubmit = (data) => {
-    const { phone, code } = data;
+    const phone = data.phone;
+    const code = data.code;
 
     if (!otpSent) {
       sendOtp.mutate({ phone });
       return;
     }
 
-    const savedOtp = localStorage.getItem("otp");
-
     if (!code) {
       toast.error("کد تایید را وارد کنید");
       return;
     }
 
-    if (code === savedOtp) {
-      localStorage.setItem("token", "fake-token");
-
-      localStorage.setItem("phone", phone);
-
-      localStorage.removeItem("otp");
-
-      onLogin?.(phone);
-
-      toast.success("ورود موفق");
-
-      onClose();
-
-      router.push("/");
-    } else {
-      toast.error("کد وارد شده اشتباه است");
-    }
+    verifyOtp.mutate(code);
   };
+
+  const isLoading = sendOtp.isPending || verifyOtp.isPending;
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-        <button type="button" className={styles.close} onClick={onClose}>
+        <button
+          type="button"
+          className={styles.close}
+          onClick={onClose}
+          disabled={isLoading}
+        >
           <X size={20} />
         </button>
+
         <div className={styles.header}>
           <Image
             src="/Icon/Group.svg"
@@ -87,10 +92,11 @@ function Login({ onClose, onLogin }) {
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputGroup}>
             <Phone size={18} />
+
             <input
               type="text"
               placeholder="شماره موبایل"
-              disabled={otpSent}
+              disabled={otpSent || isLoading}
               {...register("phone", {
                 setValueAs: (value) => toEnglishDigits(value),
               })}
@@ -109,6 +115,7 @@ function Login({ onClose, onLogin }) {
                 <input
                   type="text"
                   placeholder="کد تایید"
+                  disabled={verifyOtp.isPending}
                   {...register("code", {
                     setValueAs: (value) => toEnglishDigits(value),
                   })}
@@ -121,16 +128,14 @@ function Login({ onClose, onLogin }) {
             </>
           )}
 
-          <button
-            className={styles.button}
-            type="submit"
-            disabled={sendOtp.isPending}
-          >
+          <button className={styles.button} type="submit" disabled={isLoading}>
             {sendOtp.isPending
               ? "در حال ارسال..."
-              : otpSent
-                ? "ورود"
-                : "دریافت کد"}
+              : verifyOtp.isPending
+                ? "در حال بررسی..."
+                : otpSent
+                  ? "ورود"
+                  : "دریافت کد"}
           </button>
         </form>
       </div>

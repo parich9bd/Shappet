@@ -7,6 +7,7 @@ import Login from "@/Components/Auth/authForm/Login";
 import HeaderMenu from "./Menu";
 import toast from "react-hot-toast";
 
+import { getMeRequest } from "@/Services/auth";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { getProducts } from "@/Services/productService";
@@ -45,13 +46,16 @@ function SearchBar() {
   const router = useRouter();
 
   useEffect(() => {
-    const savedPhone = localStorage.getItem("phone");
+    const checkAuth = async () => {
+      try {
+        const data = await getMeRequest();
+        setUser(data.user);
+      } catch {
+        setUser(null);
+      }
+    };
 
-    if (savedPhone) {
-      setUser({
-        phone: savedPhone,
-      });
-    }
+    checkAuth();
   }, []);
 
   useEffect(() => {
@@ -200,11 +204,9 @@ function SearchBar() {
 
                   <div
                     onClick={() => {
-                      const token = localStorage.getItem("token");
-
                       setShowMenu(false);
 
-                      if (!token) {
+                      if (!user) {
                         toast.error(
                           "برای ورود به پروفایل ابتدا وارد حساب شوید",
                         );
@@ -290,16 +292,14 @@ function SearchBar() {
 
               <div
                 onClick={() => {
-                  const token = localStorage.getItem("token");
-
                   setShowMenu(false);
 
-                  if (!token) {
+                  if (!user) {
                     toast.error("برای ورود به پروفایل ابتدا وارد حساب شوید");
                     return;
                   }
 
-                  window.location.href = "/profile";
+                  router.push("/profile");
                 }}
                 className={styles.loginBtn}
               >
@@ -333,8 +333,8 @@ function SearchBar() {
       {showLoginModal && (
         <Login
           onClose={() => setShowLoginModal(false)}
-          onLogin={(phone) => {
-            setUser({ phone });
+          onLogin={(user) => {
+            setUser(user);
           }}
         />
       )}
