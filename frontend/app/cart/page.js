@@ -22,7 +22,7 @@ export default function Page() {
         <ShoppingCart size={70} />
         <h2>سبد خرید شما خالی است.</h2>
 
-        <Link href="/products" className={styles.shopBtn}>
+        <Link href="/shop" className={styles.shopBtn}>
           مشاهده محصولات
         </Link>
       </section>
