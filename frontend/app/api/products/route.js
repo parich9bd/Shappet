@@ -1,5 +1,7 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export async function GET() {
-  const response = await fetch("http://localhost:3001/api/products", {
+  const response = await fetch(`${API_URL}/products`, {
     cache: "no-store",
   });
 

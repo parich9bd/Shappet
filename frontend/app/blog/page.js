@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { User, CalendarDays, ArrowUpRight } from "lucide-react";
+
+import { getArticles } from "@/Services/articleService";
+
 import styles from "./blog.module.css";
 
 export default function BlogPage() {
@@ -11,10 +14,13 @@ export default function BlogPage() {
 
   useEffect(() => {
     async function fetchArticles() {
-      const res = await fetch("http://localhost:3001/api/articles")
-      const data = await res.json();
+      try {
+        const data = await getArticles();
 
-      setArticles(data);
+        setArticles(data);
+      } catch (error) {
+        console.error("Failed to fetch articles:", error);
+      }
     }
 
     fetchArticles();

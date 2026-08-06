@@ -6,6 +6,7 @@ const pool = new Pool({
   database: process.env.DB_NAME || "shopet_db",
   user: process.env.DB_USER || "alfa",
   password: process.env.DB_PASSWORD || "",
+  ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : false,
 });
 
 module.exports = pool;

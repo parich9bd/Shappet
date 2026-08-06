@@ -1,13 +1,10 @@
-import styles from "./catfood.module.css";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
+import { getProducts } from "@/Services/productService";
 
+import styles from "./catfood.module.css";
 
 export default async function CatFoodPage() {
-  const res = await fetch("http://localhost:3001/api/products", {
-    cache: "no-store",
-  });
-
-  const products = await res.json();
+  const products = await getProducts();
 
   const catFoods = products.filter(
     (product) => product.category === "cat-food"

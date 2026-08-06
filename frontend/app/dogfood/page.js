@@ -1,15 +1,12 @@
 import styles from "./dogfood.module.css";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
+import { getProducts } from "@/Services/productService";
 
 export default async function DogFoodPage() {
-  const res = await fetch("http://localhost:3001/api/products", {
-    cache: "no-store",
-  });
-
-  const products = await res.json();
+  const products = await getProducts();
 
   const dogFoods = products.filter(
-    (product) => product.category === "dog-food",
+    (product) => product.category === "dog-food"
   );
 
   return (
@@ -17,7 +14,9 @@ export default async function DogFoodPage() {
       <div className={styles.hero}>
         <h1>غذای سگ</h1>
 
-        <p>مجموعه‌ای از بهترین غذاهای خشک و مرطوب سگ از برندهای معتبر.</p>
+        <p>
+          مجموعه‌ای از بهترین غذاهای خشک و مرطوب سگ از برندهای معتبر.
+        </p>
       </div>
 
       <div className={styles.grid}>

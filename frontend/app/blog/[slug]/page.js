@@ -1,15 +1,14 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 import { User, CalendarDays, Clock3, Tag } from "lucide-react";
+
+import { getArticles } from "@/Services/articleService";
+
+import styles from "./page.module.css";
 
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
 
-  const res = await fetch("http://localhost:3001/api/articles", {
-    cache: "no-store",
-  });
-
-  const articles = await res.json();
+  const articles = await getArticles();
 
   const article = articles.find((item) => item.slug === slug);
 

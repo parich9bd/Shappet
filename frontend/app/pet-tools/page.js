@@ -1,18 +1,13 @@
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import styles from "./page.module.css";
-
-async function getProducts() {
-  const res = await fetch("http://localhost:3001/api/products", {
-    cache: "no-store",
-  });
-
-  return res.json();
-}
+import { getProducts } from "@/Services/productService";
 
 export default async function Page() {
   const products = await getProducts();
 
-  const tools = products.filter((item) => item.category === "accessories");
+  const tools = products.filter(
+    (product) => product.category === "accessories"
+  );
 
   return (
     <section className={styles.container}>

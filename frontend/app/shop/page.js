@@ -1,53 +1,32 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
 import { getProducts } from "@/Services/productService";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import styles from "./shop.module.css";
 
-export default function ShopPage() {
-  const [products, setProducts] = useState([]);
-  const [status, setStatus] = useState("loading");
+export default async function ShopPage() {
+  let products = [];
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setStatus("loading");
+  try {
+    products = await getProducts();
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
 
-        const data = await getProducts();
-
-        setProducts(data);
-        setStatus("success");
-      } catch (err) {
-        console.log(err);
-        setStatus("error");
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const statistics = useMemo(() => {
-    return {
-      totalProducts: products.length,
-      available: products.filter((p) => p.isAvailable).length,
-      featured: products.filter((p) => p.isFeatured).length,
-      bestSeller: products.filter((p) => p.isBestSeller).length,
-      newProducts: products.filter((p) => p.isNew).length,
-      discounts: products.filter((p) => p.discount > 0).length,
-      totalStock: products.reduce((sum, p) => sum + p.stock, 0),
-      categories: [...new Set(products.map((p) => p.category))].length,
-      brands: [...new Set(products.map((p) => p.brand))].length,
-    };
-  }, [products]);
-
-  if (status === "loading") {
-    return <div className={styles.state}>در حال بارگذاری...</div>;
+    return (
+      <div className={styles.state}>
+        خطا در دریافت محصولات
+      </div>
+    );
   }
 
-  if (status === "error") {
-    return <div className={styles.state}>خطا در دریافت محصولات</div>;
-  }
+  const statistics = {
+    totalProducts: products.length,
+    available: products.filter((p) => p.isAvailable).length,
+    featured: products.filter((p) => p.isFeatured).length,
+    bestSeller: products.filter((p) => p.isBestSeller).length,
+    newProducts: products.filter((p) => p.isNew).length,
+    discounts: products.filter((p) => p.discount > 0).length,
+    categories: new Set(products.map((p) => p.category)).size,
+    brands: new Set(products.map((p) => p.brand)).size,
+  };
 
   return (
     <section className={styles.container}>

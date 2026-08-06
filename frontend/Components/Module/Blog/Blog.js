@@ -1,23 +1,13 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Blog.module.css";
 import { User, CalendarDays, ArrowUpRight } from "lucide-react";
-function Blog() {
-  const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const res = await fetch("http://localhost:3001/api/articles");
-      const data = await res.json();
+import { getArticles } from "@/Services/articleService";
 
-      setArticles(data.slice(0, 3));
-    };
+import styles from "./Blog.module.css";
 
-    fetchArticles();
-  }, []);
+async function Blog() {
+  const articles = await getArticles();
 
   return (
     <section className={styles.blog}>
@@ -28,7 +18,7 @@ function Blog() {
       </div>
 
       <div className={styles.blogContainer}>
-        {articles.map((article) => (
+        {articles.slice(0, 3).map((article) => (
           <Link
             href={`/blog/${article.slug}`}
             key={article.id}

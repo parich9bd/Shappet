@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import toast from "react-hot-toast";
+
 import styles from "./PetTools.module.css";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import { useCart } from "@/context/CartContext";
-import toast from "react-hot-toast";
+import { getProducts } from "@/Services/productService";
 
 function PetTools() {
   const [products, setProducts] = useState([]);
@@ -20,19 +22,18 @@ function PetTools() {
     };
 
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/products");
-
-        if (!res.ok) throw new Error("Failed to fetch products");
-
-        const data = await res.json();
+        const data = await getProducts();
 
         const accessories = data
           .filter((item) => item.category === "accessories")
@@ -40,22 +41,21 @@ function PetTools() {
 
         setProducts(accessories);
       } catch (error) {
-        console.error(error);
+        console.error("Failed to fetch products:", error);
       }
     };
 
     fetchProducts();
   }, []);
 
-  // 👇 هندل سبد خرید + toast
   const handleAddToCart = (product) => {
     addToCart(product);
+
     toast.success(`${product.productName} به سبد خرید اضافه شد`);
   };
 
   return (
     <section className={styles.petTools}>
-      {/* تصویر سمت چپ */}
       <div className={styles.petToolsImage}>
         <div className={styles.imageBg}></div>
 
@@ -75,7 +75,6 @@ function PetTools() {
         </div>
       </div>
 
-      {/* محصولات */}
       <div className={styles.petToolsContent}>
         <div className={styles.petToolsProducts}>
           {(isMobile ? products.slice(0, 4) : products).map((product) => (

@@ -1,43 +1,16 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
+import { getProducts } from "@/Services/productService";
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 
 import styles from "./Products.module.css";
 
-function Products() {
-  const [products, setProducts] = useState([]);
-  const sliderRef = useRef(null);
+async function Products() {
+  const products = await getProducts();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await fetch("http://localhost:3001/api/products");
-      const data = await res.json();
-
-      // فقط جدیدترین محصولات
-      const newProducts = data.filter((product) => product.isNew).slice(0, 8);
-
-      setProducts(newProducts);
-    };
-
-    fetchProducts();
-  }, []);
-
-  const scrollLeft = () => {
-    sliderRef.current?.scrollBy({
-      left: -1100,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollRight = () => {
-    sliderRef.current?.scrollBy({
-      left: 1100,
-      behavior: "smooth",
-    });
-  };
+  const newProducts = products
+    .filter((product) => product.isNew)
+    .slice(0, 8);
 
   return (
     <section className={styles.section}>
@@ -47,15 +20,15 @@ function Products() {
         <Link href="/shop">مشاهده همه</Link>
       </div>
 
-      <div ref={sliderRef} className={styles.products}>
-        {products.map((product) => (
+      <div className={styles.products}>
+        {newProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
       <div className={styles.controls}>
-        <span onClick={scrollLeft}></span>
-        <span onClick={scrollRight}></span>
+        <span></span>
+        <span></span>
       </div>
     </section>
   );

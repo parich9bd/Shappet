@@ -1,22 +1,15 @@
 import ProductCard from "@/Components/UI/ProductCard/ProductCard";
 import styles from "./dogsProducts.module.css";
+import { getProducts } from "@/Services/productService";
 
 export default async function DogsProducts() {
-  const res = await fetch("http://localhost:3001/api/products", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("خطا در دریافت محصولات");
-  }
-
-  const products = await res.json();
+  const products = await getProducts();
 
   const dogProducts = products.filter((product) => {
     const isDogCategory = product.category === "dog-food";
 
     const isDogTag = product.tags?.some((tag) =>
-      tag.toLowerCase().includes("dog"),
+      tag.toLowerCase().includes("dog")
     );
 
     const isDogName = product.productName.includes("سگ");
@@ -38,7 +31,11 @@ export default async function DogsProducts() {
       {dogProducts.length > 0 ? (
         <div className={styles.grid}>
           {dogProducts.map((product) => (
-            <ProductCard key={product.id} product={product} variant="shop" />
+            <ProductCard
+              key={product.id}
+              product={product}
+              variant="shop"
+            />
           ))}
         </div>
       ) : (
