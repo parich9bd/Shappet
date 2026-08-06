@@ -121,7 +121,7 @@ Shopet is structured as a full-stack application with a separated frontend and b
 ⸻
 
 📁 Project Structure
-
+```
 shopet/
 │
 ├── frontend/
@@ -197,6 +197,7 @@ shopet/
 └── README.md
 
 ⸻
+``` 
 
 🔌 API
 
