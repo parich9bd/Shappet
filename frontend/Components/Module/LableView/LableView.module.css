@@ -1,0 +1,176 @@
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 460px;
+  padding: 60px 100px;
+  margin: 0 30px;
+
+  background: #e0f5ff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 550px;
+}
+
+.content h1 {
+  font-size: 52px;
+  line-height: 1.5;
+
+  color: #222;
+
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 18px;
+  line-height: 2;
+
+  color: #666;
+
+  margin-bottom: 30px;
+}
+
+.btn {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 15px 28px;
+
+  border-radius: 14px;
+
+  background: #f7763d;
+  color: white;
+
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.imageBox {
+  z-index: 2;
+}
+
+/* تصاویر تزئینی */
+
+.bone {
+  position: absolute;
+
+  top: 90px;
+  right: 0px;
+}
+
+.boneone {
+  position: absolute;
+
+  bottom: -60px;
+  right: 300px;
+}
+
+.paw {
+  position: absolute;
+
+  top: 100px;
+  left: -60px;
+}
+
+.ball {
+  position: absolute;
+
+  bottom: 60px;
+  left: 66%;
+}
+
+.ball2 {
+  position: absolute;
+
+  top: 100px;
+  left: 10px;
+}
+
+.discounting {
+  position: absolute;
+
+  top: 100px;
+  right: 53%;
+  z-index: 100;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+    padding: 35px 20px;
+    min-height: auto;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .content h1 {
+    font-size: 30px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .content p {
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    margin: 0 auto;
+    padding: 14px 24px;
+  }
+
+  .imageBox img {
+    width: 280px;
+    height: auto;
+  }
+
+  /* تصاویر تزئینی */
+
+  .bone,
+  .boneone,
+  .paw,
+  .ball2 {
+    display: none;
+  }
+
+  .ball {
+    width: 45px;
+    height: auto;
+
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .discounting {
+    top: 15px;
+    right: 15px;
+  }
+
+  .discounting img {
+    width: 70px;
+    height: auto;
+  }
+}

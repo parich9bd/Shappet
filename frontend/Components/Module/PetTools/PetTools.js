@@ -1,0 +1,93 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import toast from "react-hot-toast";
+
+import styles from "./PetTools.module.css";
+import ProductCard from "@/Components/UI/ProductCard/ProductCard";
+import { useCart } from "@/context/CartContext";
+import { getProducts } from "@/Services/productService";
+
+function PetTools() {
+  const [products, setProducts] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+
+        const accessories = data
+          .filter((item) => item.category === "accessories")
+          .slice(0, 6);
+
+        setProducts(accessories);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+
+    toast.success(`${product.productName} به سبد خرید اضافه شد`);
+  };
+
+  return (
+    <section className={styles.petTools}>
+      <div className={styles.petToolsImage}>
+        <div className={styles.imageBg}></div>
+
+        <Image
+          src="/pic/pettools.svg"
+          width={358}
+          height={776}
+          alt="Pet Tools"
+        />
+
+        <div className={styles.imageOverlay}>
+          <h2>لوازم نگهداری حیوانات</h2>
+
+          <Link href="/pet-tools" className={styles.showAllBtn}>
+            مشاهده همه
+          </Link>
+        </div>
+      </div>
+
+      <div className={styles.petToolsContent}>
+        <div className={styles.petToolsProducts}>
+          {(isMobile ? products.slice(0, 4) : products).map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onAddToCart={() => handleAddToCart(product)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default PetTools;

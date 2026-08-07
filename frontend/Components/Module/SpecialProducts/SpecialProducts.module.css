@@ -1,0 +1,168 @@
+.section {
+  position: relative;
+
+  width: calc(100% - 60px);
+  margin: 70px auto;
+  height: 132px;
+
+  border-radius: 30px;
+
+  overflow: visible;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: linear-gradient(135deg, #3ea6dd, #41bdff);
+}
+
+/* محتوا */
+
+.content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+
+  text-align: center;
+
+  align-items: center; /* مهم */
+}
+
+.content p {
+  font-size: 30px;
+  font-weight: 500;
+
+  color: white;
+
+  margin-bottom: 30px;
+  margin-right: 70px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 6px 13px;
+  height: 43px;
+  border-radius: 16px;
+
+  background: white;
+
+  color: #3ea6dd;
+
+  text-decoration: none;
+  font-weight: 700;
+
+  transition: 0.35s;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 18px 35px rgba(255, 255, 255, 0.28);
+}
+
+/* ---------------- تصاویر ---------------- */
+
+.img1,
+.img2,
+.img3,
+.img4,
+.img5 {
+  position: absolute;
+
+  z-index: 300;
+}
+
+/* فقط جای اولیه */
+
+.img1 {
+  top: 60px;
+  right: 50%;
+}
+
+.img2 {
+  left: 30%;
+}
+
+.img3 {
+  top: -50px;
+  left: 20%;
+}
+
+.img4 {
+  bottom: 0px;
+  left: 22%;
+}
+
+.img5 {
+  top: 5px;
+  left: 44px;
+}
+
+/* افکت */
+
+/* موبایل */
+@media (max-width: 768px) {
+  .section {
+    width: calc(100% - 70px);
+
+    min-height: 260px;
+    padding: 25px 20px;
+
+    justify-content: center;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    text-align: center;
+  }
+
+  .content p {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.7;
+  }
+
+  .btn {
+    padding: 12px 22px;
+    font-size: 15px;
+    height: auto;
+  }
+
+  /* تصاویر */
+
+  .img1 {
+    width: 70px;
+    top: auto;
+    bottom: -60px;
+    right: 10px;
+  }
+
+  .img2 {
+    width: 60px;
+    top: -46px;
+    left: 10px;
+  }
+
+  .img3 {
+    width: 65px;
+    bottom: -70px;
+    left: 55%;
+  }
+
+  .img4 {
+    width: 70px;
+    bottom: 0px;
+    left: 35%;
+  }
+
+  .img5 {
+    display: none;
+  }
+}
