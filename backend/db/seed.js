@@ -1,34 +1,45 @@
 const fs = require("fs");
 const path = require("path");
-const { Pool } = require("pg");
-require("dotenv").config({ path: path.join(__dirname, "../.env") });
+const mysql = require("mysql2/promise");
 
-const pool = new Pool({
-  host: process.env.DB_HOST || "localhost",
-  port: Number(process.env.DB_PORT) || 5432,
-  database: process.env.DB_NAME || "shopet_db",
-  user: process.env.DB_USER || "alfa",
-  password: process.env.DB_PASSWORD || "",
+require("dotenv").config({
+  path: path.join(__dirname, "../.env"),
+});
+
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 const dataPath = path.join(__dirname, "db.json");
-
 const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
 async function seed() {
-  const client = await pool.connect();
+  const connection = await pool.getConnection();
 
   try {
-    await client.query("BEGIN");
+    await connection.beginTransaction();
 
     console.log("Clearing existing data...");
 
-    await client.query("TRUNCATE TABLE products, articles RESTART IDENTITY CASCADE");
+    await connection.query("SET FOREIGN_KEY_CHECKS = 0");
+
+    await connection.query("TRUNCATE TABLE products");
+    await connection.query("TRUNCATE TABLE articles");
+
+    await connection.query("SET FOREIGN_KEY_CHECKS = 1");
 
     console.log("Seeding products...");
 
     for (const product of data.products) {
-      await client.query(
+      await connection.query(
         `
         INSERT INTO products (
           id,
@@ -48,10 +59,7 @@ async function seed() {
           is_available,
           tags
         )
-        VALUES (
-          $1, $2, $3, $4, $5, $6, $7, $8,
-          $9, $10, $11, $12, $13, $14, $15, $16
-        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `,
         [
           product.id,
@@ -62,14 +70,14 @@ async function seed() {
           product.image,
           product.rating,
           product.stock,
-          product.oldPrice || null,
-          product.discount || 0,
-          product.isFeatured || false,
-          product.isBestSeller || false,
-          product.isNew || false,
+          product.oldPrice ?? null,
+          product.discount ?? 0,
+          product.isFeatured ?? false,
+          product.isBestSeller ?? false,
+          product.isNew ?? false,
           product.brand,
           product.isAvailable ?? true,
-          JSON.stringify(product.tags || []),
+          JSON.stringify(product.tags ?? []),
         ]
       );
     }
@@ -79,7 +87,7 @@ async function seed() {
     console.log("Seeding articles...");
 
     for (const article of data.articles) {
-      await client.query(
+      await connection.query(
         `
         INSERT INTO articles (
           id,
@@ -102,11 +110,7 @@ async function seed() {
           is_featured,
           status
         )
-        VALUES (
-          $1, $2, $3, $4, $5, $6, $7, $8,
-          $9, $10, $11, $12, $13, $14, $15,
-          $16, $17, $18, $19
-        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `,
         [
           article.id,
@@ -117,35 +121,35 @@ async function seed() {
           article.content,
           article.thumbnail,
           article.coverImage,
-          article.author?.name || null,
-          article.author?.avatar || null,
-          article.author?.role || null,
+          article.author?.name ?? null,
+          article.author?.avatar ?? null,
+          article.author?.role ?? null,
           article.category,
           article.badge,
-          JSON.stringify(article.tags || []),
+          JSON.stringify(article.tags ?? []),
           article.publishDate,
-          article.updatedAt || new Date(),
-          article.readingTime || null,
-          article.isFeatured || false,
-          article.status || "published",
+          article.updatedAt ?? new Date(),
+          article.readingTime ?? null,
+          article.isFeatured ?? false,
+          article.status ?? "published",
         ]
       );
     }
 
     console.log(`${data.articles.length} articles inserted.`);
 
-    await client.query("COMMIT");
+    await connection.commit();
 
     console.log("Seed completed successfully.");
   } catch (error) {
-    await client.query("ROLLBACK");
+    await connection.rollback();
 
     console.error("Seed failed:");
     console.error(error);
 
     process.exitCode = 1;
   } finally {
-    client.release();
+    connection.release();
     await pool.end();
   }
 }

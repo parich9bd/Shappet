@@ -14,22 +14,26 @@ async function generateOtp(phone) {
     Date.now() + OTP_EXPIRES_IN_MINUTES * 60 * 1000,
   );
 
+  // باطل کردن OTPهای قبلی
   await pool.query(
     `
       UPDATE otp_codes
       SET used_at = NOW()
-      WHERE phone = $1
+      WHERE phone = ?
         AND used_at IS NULL
     `,
     [phone],
   );
 
+  // ایجاد OTP جدید
   await pool.query(
     `
-      INSERT INTO otp_codes
-        (phone, code_hash, expires_at)
-      VALUES
-        ($1, $2, $3)
+      INSERT INTO otp_codes (
+        phone,
+        code_hash,
+        expires_at
+      )
+      VALUES (?, ?, ?)
     `,
     [phone, codeHash, expiresAt],
   );
@@ -44,11 +48,11 @@ async function generateOtp(phone) {
 }
 
 async function verifyOtp(phone, otp) {
-  const result = await pool.query(
+  const [rows] = await pool.query(
     `
       SELECT *
       FROM otp_codes
-      WHERE phone = $1
+      WHERE phone = ?
         AND used_at IS NULL
       ORDER BY created_at DESC
       LIMIT 1
@@ -56,7 +60,7 @@ async function verifyOtp(phone, otp) {
     [phone],
   );
 
-  const otpRecord = result.rows[0];
+  const otpRecord = rows[0];
 
   if (!otpRecord) {
     throw new Error("کد تایید پیدا نشد");
@@ -80,7 +84,7 @@ async function verifyOtp(phone, otp) {
       `
         UPDATE otp_codes
         SET attempts = attempts + 1
-        WHERE id = $1
+        WHERE id = ?
       `,
       [otpRecord.id],
     );
@@ -88,39 +92,67 @@ async function verifyOtp(phone, otp) {
     throw new Error("کد تایید اشتباه است");
   }
 
+  // OTP مصرف شد
   await pool.query(
     `
       UPDATE otp_codes
       SET used_at = NOW()
-      WHERE id = $1
+      WHERE id = ?
     `,
     [otpRecord.id],
   );
 
-  let userResult = await pool.query(
+  // پیدا کردن کاربر
+  const [userRows] = await pool.query(
     `
-      SELECT *
+      SELECT
+        id,
+        phone,
+        name,
+        email,
+        city,
+        created_at,
+        updated_at
       FROM users
-      WHERE phone = $1
+      WHERE phone = ?
+      LIMIT 1
     `,
     [phone],
   );
 
-  let user = userResult.rows[0];
+  let user = userRows[0];
 
+  // اگر کاربر وجود نداشت، ایجادش کن
   if (!user) {
-    userResult = await pool.query(
+    const [insertResult] = await pool.query(
       `
         INSERT INTO users (phone)
-        VALUES ($1)
-        RETURNING *
+        VALUES (?)
       `,
       [phone],
     );
 
-    user = userResult.rows[0];
+    const [newUserRows] = await pool.query(
+      `
+        SELECT
+          id,
+          phone,
+          name,
+          email,
+          city,
+          created_at,
+          updated_at
+        FROM users
+        WHERE id = ?
+        LIMIT 1
+      `,
+      [insertResult.insertId],
+    );
+
+    user = newUserRows[0];
   }
 
+  // ساخت JWT
   const token = jwt.sign(
     {
       userId: user.id,

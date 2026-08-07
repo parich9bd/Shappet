@@ -61,7 +61,7 @@ async function verifyOtpCode(req, res, next) {
 
 async function getMe(req, res, next) {
   try {
-    const result = await pool.query(
+    const [rows] = await pool.query(
       `
         SELECT
           id,
@@ -72,12 +72,12 @@ async function getMe(req, res, next) {
           created_at,
           updated_at
         FROM users
-        WHERE id = $1
+        WHERE id = ?
       `,
       [req.user.userId],
     );
 
-    const user = result.rows[0];
+    const user = rows[0];
 
     if (!user) {
       return res.status(404).json({
