@@ -1,16 +1,26 @@
 const productsService = require("../services/products.service");
 
 async function getProducts(req, res, next) {
+  console.log("➡️ GET /api/products");
+
   try {
+    console.log("🔄 Calling productsService.getAllProducts()");
+
     const products = await productsService.getAllProducts();
 
-    res.json(products);
+    console.log("✅ Products received:", products.length);
+
+    return res.status(200).json(products);
   } catch (error) {
-    next(error);
+    console.error("❌ getProducts error:", error);
+
+    return next(error);
   }
 }
 
 async function getProduct(req, res, next) {
+  console.log("➡️ GET /api/products/:id", req.params.id);
+
   try {
     const product = await productsService.getProductById(req.params.id);
 
@@ -20,9 +30,11 @@ async function getProduct(req, res, next) {
       });
     }
 
-    res.json(product);
+    return res.status(200).json(product);
   } catch (error) {
-    next(error);
+    console.error("❌ getProduct error:", error);
+
+    return next(error);
   }
 }
 
