@@ -3,6 +3,7 @@ import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import Header from "@/Components/Layout/Header";
 import Footer from "@/Components/Layout/Footer";
+import { AuthProvider } from "@/context/Auth/AuthContext";
 
 import { Toaster } from "react-hot-toast";
 import { SearchProvider } from "@/context/SearchContext";
@@ -40,8 +41,8 @@ export const metadata = {
   keywords: ["شاپت", "غذای سگ", "غذای گربه", "Pet Shop"],
 
   icons: {
-    icon: "/icon/Group.svg",
-    shortcut: "/icon/Group.svg",
+    icon: "/Icon/Group.svg",
+    shortcut: "/Icon/Group.svg",
     apple: "/apple-touch-icon.png",
   },
 
@@ -74,19 +75,21 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body>
         <ReactQueryProvider>
-          <SearchProvider>
-            <FavoritesProvider>
-              <CartProvider>
-                <Header />
+          <AuthProvider>
+            <SearchProvider>
+              <FavoritesProvider>
+                <CartProvider>
+                  <Header />
 
-                <main className="container">{children}</main>
+                  <main className="container">{children}</main>
 
-                <Toaster position="top-center" />
+                  <Toaster position="top-center" />
 
-                <Footer />
-              </CartProvider>
-            </FavoritesProvider>
-          </SearchProvider>
+                  <Footer />
+                </CartProvider>
+              </FavoritesProvider>
+            </SearchProvider>
+          </AuthProvider>
         </ReactQueryProvider>
       </body>
     </html>

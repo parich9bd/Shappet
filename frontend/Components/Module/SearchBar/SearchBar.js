@@ -7,7 +7,7 @@ import Login from "@/Components/Auth/authForm/Login";
 import HeaderMenu from "./Menu";
 import toast from "react-hot-toast";
 
-import { getMeRequest } from "@/Services/auth";
+import { useAuth } from "@/context/Auth/AuthContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { getProducts } from "@/Services/productService";
@@ -35,7 +35,8 @@ import {
 function SearchBar() {
   const [showMenu, setShowMenu] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [user, setUser] = useState(null);
+
+  const { user } = useAuth();
 
   const { query, setQuery, setLoading, setResults } = useSearch();
   const { cart } = useCart();
@@ -43,29 +44,19 @@ function SearchBar() {
 
   const mobileMenuRef = useRef(null);
   const userMenuRef = useRef(null);
+
   const router = useRouter();
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const data = await getMeRequest();
-        setUser(data.user);
-      } catch {
-        setUser(null);
-      }
-    };
-
-    checkAuth();
-  }, []);
-
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target) &&
-        userMenuRef.current &&
-        !userMenuRef.current.contains(event.target)
-      ) {
+      const clickedInsideMobile =
+        mobileMenuRef.current?.contains(event.target);
+
+      const clickedInsideUser =
+        userMenuRef.current?.contains(event.target);
+
+      if (!clickedInsideMobile && !clickedInsideUser) {
         setShowMenu(false);
       }
     };
@@ -77,6 +68,7 @@ function SearchBar() {
     };
   }, []);
 
+  // Search products
   useEffect(() => {
     if (!query.trim()) {
       setLoading(false);
@@ -89,11 +81,15 @@ function SearchBar() {
     const delay = setTimeout(async () => {
       try {
         const products = await getProducts();
+
         const filtered = products.filter((item) =>
-          item.productName.toLowerCase().includes(query.toLowerCase()),
+          item.productName
+            .toLowerCase()
+            .includes(query.toLowerCase()),
         );
+
         setResults(filtered);
-      } catch (err) {
+      } catch {
         setResults([]);
       } finally {
         setLoading(false);
@@ -101,11 +97,28 @@ function SearchBar() {
     }, 2000);
 
     return () => clearTimeout(delay);
-  }, [query]);
+  }, [query, setLoading, setResults]);
+
+  const handleProfileClick = () => {
+    setShowMenu(false);
+
+    if (!user) {
+      toast.error("برای ورود به پروفایل ابتدا وارد حساب شوید");
+      return;
+    }
+
+    router.push("/profile");
+  };
+
+  const handleLoginClick = () => {
+    setShowMenu(false);
+    setShowLoginModal(true);
+  };
 
   return (
     <>
       <section className={styles.section}>
+        {/* Logo */}
         <div className={styles.logoBox}>
           <Image
             src="/Logo/svgexport-7 (3) 1.svg"
@@ -117,13 +130,12 @@ function SearchBar() {
           <p>شاپت</p>
 
           <div className={styles.logoTooltip}>
-            🐾 شاپت تا امروز حامی نجات بیش از <strong>۱۰٬۰۰۰</strong> حیوان
-            بی‌سرپرست بوده است.
+            🐾 شاپت تا امروز حامی نجات بیش از{" "}
+            <strong>۱۰٬۰۰۰</strong> حیوان بی‌سرپرست بوده است.
           </div>
         </div>
 
         {/* Search */}
-
         <div className={styles.searchBox}>
           <input
             type="text"
@@ -132,11 +144,13 @@ function SearchBar() {
             onChange={(e) => setQuery(e.target.value)}
           />
 
-          <Search size={20} className={styles.searchIcon} />
+          <Search
+            size={20}
+            className={styles.searchIcon}
+          />
         </div>
 
-        {/* ================= Desktop ================= */}
-
+        {/* Desktop */}
         <div className={styles.desktopActions}>
           <div className={styles.infoBox}>
             <Image
@@ -167,73 +181,87 @@ function SearchBar() {
           </div>
 
           <div className={styles.iconsBox}>
-            <Link href="/favorites" className={styles.favoriteLink}>
+            {/* Favorites */}
+            <Link
+              href="/favorites"
+              className={styles.favoriteLink}
+            >
               <Heart size={22} />
 
               {favorites.length > 0 && (
-                <span className={styles.badge}>{favorites.length}</span>
-              )}
-            </Link>
-
-            <Link href="/cart" className={styles.cartLink}>
-              <ShoppingCart size={22} />
-
-              {cart.length > 0 && (
                 <span className={styles.badge}>
-                  {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                  {favorites.length}
                 </span>
               )}
             </Link>
 
-            <div className={styles.userMenu} ref={userMenuRef}>
+            {/* Cart */}
+            <Link
+              href="/cart"
+              className={styles.cartLink}
+            >
+              <ShoppingCart size={22} />
+
+              {cart.length > 0 && (
+                <span className={styles.badge}>
+                  {cart.reduce(
+                    (sum, item) => sum + item.quantity,
+                    0,
+                  )}
+                </span>
+              )}
+            </Link>
+
+            {/* User */}
+            <div
+              className={styles.userMenu}
+              ref={userMenuRef}
+            >
               <User
                 size={22}
                 className={styles.userIcon}
-                onClick={() => setShowMenu(!showMenu)}
+                onClick={() => setShowMenu((prev) => !prev)}
               />
-              <span className={styles.userTooltip}>حساب کاربری</span>
+
+              <span className={styles.userTooltip}>
+                حساب کاربری
+              </span>
 
               {showMenu && (
                 <div className={styles.userPopup}>
                   <button
+                    type="button"
                     className={styles.closeBtn}
                     onClick={() => setShowMenu(false)}
                   >
                     <X size={22} />
                   </button>
 
-                  <div
-                    onClick={() => {
-                      setShowMenu(false);
-
-                      if (!user) {
-                        toast.error(
-                          "برای ورود به پروفایل ابتدا وارد حساب شوید",
-                        );
-                        return;
-                      }
-
-                      router.push("/profile");
-                    }}
+                  {/* Profile */}
+                  <button
+                    type="button"
+                    onClick={handleProfileClick}
                     className={styles.loginBtn}
                   >
                     <User size={18} />
                     پروفایل
-                  </div>
+                  </button>
 
+                  {/* User */}
                   {user ? (
                     <div className={styles.loginBtn}>
-                      <BadgeCheck size={18} color="#22c55e" />
+                      <BadgeCheck
+                        size={18}
+                        color="#22c55e"
+                      />
+
                       {toPersianDigits(user.phone)}
                     </div>
                   ) : (
                     <button
                       type="button"
                       className={styles.loginBtn}
-                      onClick={() => {
-                        setShowMenu(false);
-                        setShowLoginModal(true);
-                      }}
+                      onClick={handleLoginClick}
                     >
                       <LogIn size={18} />
                       ورود
@@ -245,18 +273,21 @@ function SearchBar() {
           </div>
         </div>
 
-        {/* ================= Mobile ================= */}
-
-        <div className={styles.mobileMenu} ref={mobileMenuRef}>
+        {/* Mobile */}
+        <div
+          className={styles.mobileMenu}
+          ref={mobileMenuRef}
+        >
           <Menu
             size={28}
             className={styles.userIcon}
-            onClick={() => setShowMenu(!showMenu)}
+            onClick={() => setShowMenu((prev) => !prev)}
           />
 
           {showMenu && (
             <div className={styles.userPopup}>
               <button
+                type="button"
                 className={styles.closeBtn}
                 onClick={() => setShowMenu(false)}
               >
@@ -290,36 +321,31 @@ function SearchBar() {
 
               <hr />
 
-              <div
-                onClick={() => {
-                  setShowMenu(false);
-
-                  if (!user) {
-                    toast.error("برای ورود به پروفایل ابتدا وارد حساب شوید");
-                    return;
-                  }
-
-                  router.push("/profile");
-                }}
+              {/* Profile */}
+              <button
+                type="button"
+                onClick={handleProfileClick}
                 className={styles.loginBtn}
               >
                 <User size={18} />
                 پروفایل
-              </div>
+              </button>
 
+              {/* User / Login */}
               {user ? (
                 <div className={styles.loginBtn}>
-                  <BadgeCheck size={18} color="#22c55e" />
+                  <BadgeCheck
+                    size={18}
+                    color="#22c55e"
+                  />
+
                   {toPersianDigits(user.phone)}
                 </div>
               ) : (
                 <button
                   type="button"
                   className={styles.loginBtn}
-                  onClick={() => {
-                    setShowMenu(false);
-                    setShowLoginModal(true);
-                  }}
+                  onClick={handleLoginClick}
                 >
                   <LogIn size={18} />
                   ورود
@@ -329,13 +355,13 @@ function SearchBar() {
           )}
         </div>
       </section>
+
       <HeaderMenu className={styles.menuDesk} />
+
+      {/* Login Modal */}
       {showLoginModal && (
         <Login
           onClose={() => setShowLoginModal(false)}
-          onLogin={(user) => {
-            setUser(user);
-          }}
         />
       )}
     </>

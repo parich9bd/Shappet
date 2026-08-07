@@ -13,9 +13,12 @@ import styles from "./Login.module.css";
 
 import { loginSchema } from "@/schemas/loginSchema";
 import { useSendOtp, useVerifyOtp } from "@/hooks/useLogin";
+import { useAuth } from "@/context/Auth/AuthContext";
 
-function Login({ onClose, onLogin }) {
+function Login({ onClose }) {
   const router = useRouter();
+  const { setUser } = useAuth();
+
   const [otpSent, setOtpSent] = useState(false);
 
   const {
@@ -39,8 +42,13 @@ function Login({ onClose, onLogin }) {
     phone,
 
     onSuccess: (data) => {
-      onLogin?.(data.user);
+      // Update global authentication state
+      setUser(data.user);
+
+      // Close login modal
       onClose();
+
+      // Go to home page
       router.push("/");
     },
   });
@@ -49,16 +57,19 @@ function Login({ onClose, onLogin }) {
     const phone = data.phone;
     const code = data.code;
 
+    // Step 1: Send OTP
     if (!otpSent) {
       sendOtp.mutate({ phone });
       return;
     }
 
+    // Step 2: Validate OTP input
     if (!code) {
       toast.error("کد تایید را وارد کنید");
       return;
     }
 
+    // Step 3: Verify OTP
     verifyOtp.mutate(code);
   };
 
@@ -86,10 +97,15 @@ function Login({ onClose, onLogin }) {
           />
 
           <h2>شاپت</h2>
+
           <p>ورود به حساب کاربری</p>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          {/* Phone */}
           <div className={styles.inputGroup}>
             <Phone size={18} />
 
@@ -104,9 +120,12 @@ function Login({ onClose, onLogin }) {
           </div>
 
           {errors.phone && (
-            <span className={styles.error}>{errors.phone.message}</span>
+            <span className={styles.error}>
+              {errors.phone.message}
+            </span>
           )}
 
+          {/* OTP */}
           {otpSent && (
             <>
               <div className={styles.inputGroup}>
@@ -123,12 +142,19 @@ function Login({ onClose, onLogin }) {
               </div>
 
               {errors.code && (
-                <span className={styles.error}>{errors.code.message}</span>
+                <span className={styles.error}>
+                  {errors.code.message}
+                </span>
               )}
             </>
           )}
 
-          <button className={styles.button} type="submit" disabled={isLoading}>
+          {/* Submit */}
+          <button
+            className={styles.button}
+            type="submit"
+            disabled={isLoading}
+          >
             {sendOtp.isPending
               ? "در حال ارسال..."
               : verifyOtp.isPending
