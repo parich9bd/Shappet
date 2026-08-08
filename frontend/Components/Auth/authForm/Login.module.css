@@ -203,6 +203,27 @@
   cursor: not-allowed;
 }
 
+
+.resendButton {
+  margin-top: -8px;
+  border: none;
+  background: transparent;
+  color: #f7763d;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.resendButton:hover:not(:disabled) {
+  color: #e85f28;
+  text-decoration: underline;
+}
+.resendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (max-width: 480px) {
   .wrapper {
     padding: 16px;

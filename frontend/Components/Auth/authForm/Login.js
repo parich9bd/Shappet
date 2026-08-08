@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -20,6 +20,7 @@ function Login({ onClose }) {
   const { setUser } = useAuth();
 
   const [otpSent, setOtpSent] = useState(false);
+  const [resendSeconds, setResendSeconds] = useState(0);
 
   const {
     register,
@@ -36,7 +37,12 @@ function Login({ onClose }) {
 
   const phone = watch("phone");
 
-  const sendOtp = useSendOtp(setOtpSent);
+  const sendOtp = useSendOtp({
+    setOtpSent,
+    onSuccess: () => {
+      setResendSeconds(120);
+    },
+  });
 
   const verifyOtp = useVerifyOtp({
     phone,
@@ -74,7 +80,15 @@ function Login({ onClose }) {
   };
 
   const isLoading = sendOtp.isPending || verifyOtp.isPending;
+  useEffect(() => {
+    if (resendSeconds <= 0) return;
 
+    const timer = setInterval(() => {
+      setResendSeconds((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [resendSeconds]);
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
@@ -101,10 +115,7 @@ function Login({ onClose }) {
           <p>ورود به حساب کاربری</p>
         </div>
 
-        <form
-          className={styles.form}
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           {/* Phone */}
           <div className={styles.inputGroup}>
             <Phone size={18} />
@@ -120,9 +131,7 @@ function Login({ onClose }) {
           </div>
 
           {errors.phone && (
-            <span className={styles.error}>
-              {errors.phone.message}
-            </span>
+            <span className={styles.error}>{errors.phone.message}</span>
           )}
 
           {/* OTP */}
@@ -142,19 +151,29 @@ function Login({ onClose }) {
               </div>
 
               {errors.code && (
-                <span className={styles.error}>
-                  {errors.code.message}
-                </span>
+                <span className={styles.error}>{errors.code.message}</span>
               )}
             </>
           )}
-
+          {otpSent && (
+            <button
+              type="button"
+              className={styles.resendButton}
+              onClick={() => sendOtp.mutate({ phone })}
+              disabled={isLoading || resendSeconds > 0}
+            >
+              {resendSeconds > 0
+                ? `ارسال مجدد کد در ${String(
+                    Math.floor(resendSeconds / 60),
+                  ).padStart(2, "0")}:${String(resendSeconds % 60).padStart(
+                    2,
+                    "0",
+                  )}`
+                : "ارسال مجدد کد"}
+            </button>
+          )}
           {/* Submit */}
-          <button
-            className={styles.button}
-            type="submit"
-            disabled={isLoading}
-          >
+          <button className={styles.button} type="submit" disabled={isLoading}>
             {sendOtp.isPending
               ? "در حال ارسال..."
               : verifyOtp.isPending

@@ -1,17 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import {
-  sendOtpRequest,
-  verifyOtpRequest,
-} from "@/Services/auth";
+import { sendOtpRequest, verifyOtpRequest } from "@/Services/auth";
 
-export const useSendOtp = (setOtpSent) => {
+export const useSendOtp = ({ setOtpSent, onSuccess }) => {
   return useMutation({
     mutationFn: sendOtpRequest,
 
     onSuccess: () => {
       setOtpSent(true);
+      onSuccess?.();
 
       toast.success("کد تایید ارسال شد");
     },
